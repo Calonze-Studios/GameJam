@@ -4,7 +4,6 @@ draw_rectangle(0, 0, 912, 513, 0)
 var drawon = 0;
 
 var chatsurf = surface_create(259, 323)
-surface_resize(chatsurf, 259, 323)
 
 surface_set_target(chatsurf)
 
