@@ -1,10 +1,11 @@
 var font_width = 3;
-var font_width_on = 0;
-var maxwidth = floor(max_chatwidth/font_width)
-var storedspace = 0;
-var textarray = []
+var maxwidth = floor(max_chatwidth/font_width);
 
 for (var d = 0; d < global.streamers_unlocked; d++) {
+	var font_width_on = 0;
+	var textarray = []
+	var storedspace = 0;
+	
 	randomize()
 	var name = scr_chat_get_random_username();
 	var msg = scr_chat_get_random_message_by_state(global.chat_state[d]);

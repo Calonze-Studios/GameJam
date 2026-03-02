@@ -4,19 +4,27 @@ if keyboard_check_pressed(ord("0")) && keyboard_check(vk_shift) {
 	scr_streamer_change_state(0);
 }
 if keyboard_check_pressed(ord("1")) && keyboard_check(vk_shift) {
-	scr_streamer_change_state(1);
+	scr_streamer_change_state(1, global.streamer_on);
+	
+	scr_streamer_say(0, snd_testsound1)
+	scr_streamer_say(1, snd_testsound0)
 }
 
 if keyboard_check_pressed(vk_right)
 	global.streamer_on++
 if keyboard_check_pressed(vk_left)
 	global.streamer_on--
+	
+if global.streamer_on == global.streamers_unlocked
+	global.streamer_on = 0;
+if global.streamer_on < 0
+	global.streamer_on = global.streamers_unlocked - 1
 
 if keyboard_check_pressed(ord("D")) 
 	scr_add_streamer(1, 3, 60, 15, 0, 1)
 
 /// Main stuff
-streamer_sprite = asset_get_index("spr_streamer" + string(global.streamer_on) + "_" + scr_get_string_by_state(global.streamer_state[global.streamer_on]));
+streamer_sprite = asset_get_index("spr_streamer" + string(global.streamer_sprite[global.streamer_on]) + "_" + scr_get_string_by_state(global.streamer_state[global.streamer_on]));
 // Setting the streamer sprite for the streamer you're on
 
 global.streamer_speed[global.streamer_on] -= streamer_adding_rate;
@@ -33,7 +41,7 @@ if streamer_timer >= 30 {
 if global.streamer_speed[global.streamer_on] != global.streamer_speed_norm[global.streamer_on] && streamer_alarmed_once == 0 {
 	streamer_timer = 0;
 	streamer_frame = 0;
-	alarm[2] = 90;
+	alarm[2] = 45;
 	streamer_alarmed_once = 1;
 }
 // If the streamer speed of the current streamer isn't
@@ -66,7 +74,7 @@ if keyboard_check_pressed(ord("1")) && !keyboard_check(vk_shift) {
 /// Main stuff
 
 if global.chat_rate[global.streamer_on] != global.chat_rate_norm[global.streamer_on] && chat_alarmed_once == 0 {
-	alarm[1] = 90;
+	alarm[1] = 45;
 	chat_alarmed_once = 1;
 }
 // If the chat speed of the current streamer isn't

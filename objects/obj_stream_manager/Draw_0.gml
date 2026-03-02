@@ -1,6 +1,5 @@
 draw_set_color(c_black)
 draw_rectangle(0, 0, 912, 513, 0)
-//draw_rectangle()
 
 var drawon = 0;
 
@@ -14,6 +13,7 @@ draw_clear(#0b0018)
 draw_set_font(global.font);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
+draw_set_valign(fa_top)
 
 var y_offset = 0;
 
