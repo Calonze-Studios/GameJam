@@ -22,8 +22,6 @@ for (var d = 0; d < global.streamers_unlocked; d++) {
 			storedspace = i;
 		
 		if font_width_on > maxwidth && storedspace != 0 {
-			show_debug_message(font_width_on)
-			show_debug_message(maxwidth)
 			font_width_on = 0;
 			textarray[storedspace-1] = "\n";
 			i = storedspace;

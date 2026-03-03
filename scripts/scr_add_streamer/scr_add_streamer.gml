@@ -20,5 +20,5 @@ function scr_add_streamer(spd_norm = 2, spd_max = 6, chat_spd_norm = 30, chat_sp
 	array_push(global.subtitle_timer, 0);
 	array_push(global.line_sound, -1);
 	
-	
+	array_push(global.streamsurf, surface_create(912, 513));
 }

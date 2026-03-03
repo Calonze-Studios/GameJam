@@ -23,7 +23,7 @@ global.streamsurf[0] = surface_create(912, 513);
 
 global.night_on = 0; // Which night you're currently on
 
-global.game_state = 1; // 0 - not watching stream
+global.game_state = 0; // 0 - not watching stream
 					   // 1 - watching stream
 					   // 2 - in shop
 					   // 3 - pause menu

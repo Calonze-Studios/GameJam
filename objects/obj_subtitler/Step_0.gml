@@ -18,7 +18,6 @@ for (var i = 0; i < global.streamers_unlocked; i++) {
 			global.subtitles[i] = "";
 		}
 	}
-	show_debug_message(global.line_sound[global.streamer_on])
 	
 	if global.subtitles[i] != "" && string_replace(global.subtitles[i], "\n", " ") == global.subtitles[i] {
 		var font_width = 3

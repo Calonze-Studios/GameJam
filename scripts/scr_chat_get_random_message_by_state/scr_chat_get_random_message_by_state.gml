@@ -7,7 +7,7 @@ function scr_chat_get_random_message_by_state(state = global.chat_state[global.s
 				"so NEUTRALs... so IDLE.",
 				"i remember you're... NEUTRALS."
 			];
-			break;
+		break;
 		case 1:
 			random_messages = [
 				"i feel... ANGRY...",

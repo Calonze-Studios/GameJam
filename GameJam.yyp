@@ -20,6 +20,7 @@
     {"id":{"name":"scr_streamer_get_text_by_audio","path":"scripts/scr_streamer_get_text_by_audio/scr_streamer_get_text_by_audio.yy",},"order":9,},
     {"id":{"name":"spr_streamer1_angry","path":"sprites/spr_streamer1_angry/spr_streamer1_angry.yy",},"order":2,},
     {"id":{"name":"scr_chat_change_state","path":"scripts/scr_chat_change_state/scr_chat_change_state.yy",},"order":4,},
+    {"id":{"name":"obj_stream_switcher","path":"objects/obj_stream_switcher/obj_stream_switcher.yy",},"order":4,},
     {"id":{"name":"scr_add_streamer","path":"scripts/scr_add_streamer/scr_add_streamer.yy",},"order":8,},
     {"id":{"name":"scr_get_string_by_state","path":"scripts/scr_get_string_by_state/scr_get_string_by_state.yy",},"order":6,},
     {"id":{"name":"spr_egg_font","path":"sprites/spr_egg_font/spr_egg_font.yy",},"order":2,},
