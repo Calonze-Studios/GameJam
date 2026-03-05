@@ -20,6 +20,10 @@ global.subtitle_timer = [0]; // Timer for the subtitles to disappear
 global.line_sound = [-1]; // Which sound the subtitles should play
 
 global.streamsurf[0] = surface_create(912, 513);
+global.computersurf = surface_create(952, 596);
+
+global.computersurf_xdraw = 365;
+global.computersurf_ydraw = 97;
 
 global.night_on = 0; // Which night you're currently on
 
@@ -27,10 +31,12 @@ global.game_state = 0; // 0 - not watching stream
 					   // 1 - watching stream
 					   // 2 - in shop
 					   // 3 - pause menu
+					   
+global.stream_hovering = -1;
 
 global.game_paused = 0;
 
 global.font = font_add_sprite_ext(spr_egg_font, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.:!?,;'\"()[]{}$@#/\\|%^*-+=<>~01234567890", 0, 1);
 
 window_set_size(1600, 900);
-window_center();
+//window_center();

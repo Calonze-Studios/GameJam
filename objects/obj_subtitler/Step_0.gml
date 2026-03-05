@@ -1,10 +1,10 @@
 for (var i = 0; i < global.streamers_unlocked; i++) {
 	if global.line_sound[i] != -1 {
 		
-		if (i != global.streamer_on || global.game_state != 1) && audio_is_playing(global.line_sound[i])
+		if ((i != global.streamer_on || global.game_state != 1) || (i != global.stream_hovering || global.game_state != 0)) && audio_is_playing(global.line_sound[i])
 			audio_stop_sound(global.line_sound[i])
 			
-		if i == global.streamer_on && global.game_state == 1 && !audio_is_playing(global.line_sound[i])
+		if ((i == global.streamer_on && global.game_state == 1) || (i == global.stream_hovering && global.game_state == 0)) && !audio_is_playing(global.line_sound[i])
 			audio_play_sound(global.line_sound[i], 1, 0, 1, global.subtitle_timer[i]/30)
 			
 		if global.subtitles[i] == ""

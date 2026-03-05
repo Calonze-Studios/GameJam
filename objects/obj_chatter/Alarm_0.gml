@@ -37,7 +37,7 @@ for (var d = 0; d < global.streamers_unlocked; d++) {
 
 	array_push(global.chat_messages[d], finished_message);
 
-	if array_length(global.chat_messages) > 21 {
+	if array_length(global.chat_messages[d]) > 21 {
 		for (var c = 0; c < array_length(global.chat_messages[d])-1; c++) {
 			global.chat_messages[d][c] = global.chat_messages[d][c+1]
 		}
