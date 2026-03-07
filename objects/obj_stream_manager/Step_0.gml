@@ -1,7 +1,8 @@
 ////  -- STREAMER STUFF --
 /// Testing stuff
 if keyboard_check_pressed(ord("0")) && keyboard_check(vk_shift) {
-	scr_streamer_change_state(0);
+	//scr_streamer_change_state(0);
+	scr_banter(0, 0)
 }
 if keyboard_check_pressed(ord("1")) && keyboard_check(vk_shift) {
 	scr_streamer_change_state(1, global.streamer_on);

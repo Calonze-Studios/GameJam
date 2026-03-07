@@ -45,7 +45,7 @@ rows = 0;
 screen_on = 0;
 
 if !surface_exists(global.computersurf)
-	global.computersurf = surface_create(952, 596);
+	global.computersurf = surface_create(918, 557);
 		
 surface_set_target(global.computersurf);
 draw_clear(c_black);

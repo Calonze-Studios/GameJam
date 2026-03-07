@@ -16,14 +16,15 @@ global.streamer_on = 0; // Which streamer you're currently watching
 global.streamers_unlocked = 1; // How many streamers you currently have
 
 global.subtitles = [""]; // Each streamer's subtitles
+global.banter_subtitles = 0;
 global.subtitle_timer = [0]; // Timer for the subtitles to disappear
 global.line_sound = [-1]; // Which sound the subtitles should play
 
 global.streamsurf[0] = surface_create(912, 513);
-global.computersurf = surface_create(952, 596);
+global.computersurf = surface_create(918, 557);
 
-global.computersurf_xdraw = 365;
-global.computersurf_ydraw = 97;
+global.computersurf_xdraw = 382;
+global.computersurf_ydraw = 117;
 
 global.night_on = 0; // Which night you're currently on
 
