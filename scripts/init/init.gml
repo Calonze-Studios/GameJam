@@ -35,6 +35,7 @@ global.game_state = 0; // 0 - not watching stream
 					   
 global.stream_hovering = -1;
 
+global.in_shop = 0;
 global.game_paused = 0;
 
 global.font = font_add_sprite_ext(spr_egg_font, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.:!?,;'\"()[]{}$@#/\\|%^*-+=<>~01234567890", 0, 1);
