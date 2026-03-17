@@ -11,6 +11,7 @@ global.chat_messages[0] = []; // Each streamer's chat's messages
 
 global.streamer_game = [0]; // Which game each streamer is playing
 global.streamer_game_state = [0]; // The state of each streamer's game
+
 global.streamer_sprite = [0] // Which set of sprites each streamer is using
 global.streamer_on = 0; // Which streamer you're currently watching
 global.streamers_unlocked = 1; // How many streamers you currently have
@@ -28,10 +29,15 @@ global.computersurf_ydraw = 117;
 
 global.night_on = 0; // Which night you're currently on
 
-global.game_state = 0; // 0 - not watching stream
-					   // 1 - watching stream
-					   // 2 - in shop
-					   // 3 - pause menu
+// 0 - not watching stream
+#macro GS_NOT_WATCHING 0
+// 1 - watching stream
+#macro GS_WATCHING 1
+// 2 - in shop
+#macro GS_IN_SHOP 2
+// 3 - pause menu
+#macro GS_IN_PAUSE 3
+global.game_state = GS_NOT_WATCHING;   
 					   
 global.stream_hovering = -1;
 

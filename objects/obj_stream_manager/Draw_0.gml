@@ -1,6 +1,7 @@
 var chatsurf = surface_create(259, 323)
 for (var a = 0; a < global.streamers_unlocked; a++) {
-	if a == global.stream_hovering || (a == global.streamer_on && global.game_state == 1) {
+	var is_on_streamer = a == global.streamer_on;
+	if a == global.stream_hovering || (is_on_streamer && global.game_state == 1) {
 		draw_set_color(c_black);
 		draw_rectangle(0, 0, 912, 513, 0);
 
@@ -18,7 +19,29 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		for (var i = array_length(global.chat_messages[a])-1; i >= 0; i--) {
 			drawon++;
 			y_offset -= string_height(global.chat_messages[a][i]) + 2;
-			draw_text(3, 309 + y_offset, global.chat_messages[a][i]);
+			
+			var chat_parts = string_split(global.chat_messages[a][i],": ");
+			var x_offset = 3;
+			
+			for (var j = 0; j < 2;j++){
+				var text_lines = string_split(chat_parts[j],"\n");
+				var local_y_offset = 0;
+				
+				for (var k = 0; k<array_length(text_lines);k++) {
+					if (k > 0) {
+						x_offset = 3;
+					}
+					var text = text_lines[k];
+					if (j == 0) {
+						draw_set_color(scr_color_from_name(text));
+						text = text + "  ";
+					}
+					draw_text(x_offset, 309 + y_offset + local_y_offset, text);
+					x_offset += string_width(text);
+					draw_set_color(c_white);
+					local_y_offset += string_height(text);
+				}
+			}
 		}
 
 		surface_reset_target()
