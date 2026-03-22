@@ -12,5 +12,5 @@ if !surface_exists(global.computersurf)
 
 // the bulge shader
 //shader_set(shd_bulge);
-draw_surface_ext(global.computersurf, global.computersurf_xdraw, global.computersurf_ydraw, 1, 1, 0, c_white, 0.9)
+draw_surface_ext(global.computersurf, global.computersurf_xdraw, global.computersurf_ydraw, 1, 1, 0, c_white, 1)
 //shader_reset();

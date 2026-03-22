@@ -62,6 +62,12 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		surface_set_target(global.streamsurf[a])
 	
 		draw_sprite(streamer_sprite[a], streamer_frame[a], 4, 2);
+		if (variable_instance_exists(global.streamer_game[a],"my_surface")){
+			draw_surface(global.streamer_game[a].my_surface,270,18);
+		} else {
+			draw_text(270,18,"There is no game.");
+		}
+		//show_debug_message(instance_exists(global.ste))
 		draw_set_halign(fa_right);
 		draw_text(910, 2, "chat state: " + string(global.chat_state[a]) + " (" + scr_get_string_by_state(global.chat_state[a]) + ")");
 		draw_text(910, 15, "streamer state: " + string(global.streamer_state[a]) + " (" + scr_get_string_by_state(global.streamer_state[a]) + ")");

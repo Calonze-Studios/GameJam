@@ -13,10 +13,10 @@ function scr_add_streamer(spd_norm = 2, spd_max = 6, chat_spd_norm = 30, chat_sp
 	array_push(global.chat_state, 0);
 	array_push(global.chat_messages, []);
 	
-	array_push(global.streamer_game, game);
 	array_push(global.streamer_game_state, 0);
-	var _game = instance_create_depth(0, 0, 0, obj_game);
+	var _game = instance_create_depth(0, 0, -1, obj_game);
 	_game.target_stream = global.streamers_unlocked-1;
+	array_push(global.streamer_game, _game);
 	
 	array_push(global.subtitles, "");
 	array_push(global.subtitle_timer, 0);

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "misc. utilities",
-    "path": "folders/Scripts/misc. utilities.yy",
+    "path": "folders/Rooms/Scripts/misc. utilities.yy",
   },
 }
