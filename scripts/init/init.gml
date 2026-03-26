@@ -52,4 +52,3 @@ global.font = font_add_sprite_ext(spr_egg_font, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoP
 
 window_set_size(1600, 900);
 //window_center();
-// hello.
