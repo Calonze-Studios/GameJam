@@ -4,6 +4,6 @@
   "name": "streamer states",
   "parent": {
     "name": "Scripts",
-    "path": "folders/Rooms/Scripts.yy",
+    "path": "folders/Scripts.yy",
   },
 }
