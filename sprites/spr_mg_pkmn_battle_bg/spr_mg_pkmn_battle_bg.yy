@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "battle",
-    "path": "folders/Sprites/minigames/pkmn/battle.yy",
+    "name": "GameJam",
+    "path": "GameJam.yyp",
   },
 }

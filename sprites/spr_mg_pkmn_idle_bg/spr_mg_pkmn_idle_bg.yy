@@ -80,7 +80,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "idle",
-    "path": "folders/Sprites/minigames/pkmn/idle.yy",
+    "name": "GameJam",
+    "path": "GameJam.yyp",
   },
 }
