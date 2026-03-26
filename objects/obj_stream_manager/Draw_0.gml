@@ -1,8 +1,10 @@
-var chatsurf = surface_create(259, 323)
+if !surface_exists(chatsurf)
+	chatsurf = surface_create(259, 323)
+
 for (var a = 0; a < global.streamers_unlocked; a++) {
 	if a == global.stream_hovering || (a == global.streamer_on && global.game_state == 1) {
 		draw_set_color(c_black);
-		draw_rectangle(0, 0, 912, 513, 0);
+		//draw_rectangle(0, 0, 912, 513, 0);
 
 		var drawon = 0;
 		surface_set_target(chatsurf);
@@ -49,5 +51,4 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 	}
 }
 
-surface_free(chatsurf);
 surface_reset_target();

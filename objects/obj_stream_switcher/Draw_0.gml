@@ -40,7 +40,7 @@ for (var i = 0; i < global.streamers_unlocked; i++) {
 	xcalc = (912 - (screens_on_row[rows] * (912 * xscale)) - ((screens_on_row[rows]-1) * x_space_between))/2 + ((screen_on * (912 * xscale)) + ((clamp(screen_on, 0, 4) * x_space_between)))
 	ycalc = (513 - (max_rows * (513 * yscale)) - ((max_rows-1) * y_space_between))/2 + ((rows * (513 * yscale)) + ((clamp(rows, 0, 4) * y_space_between)))
 	
-	if mouse_x >= global.computersurf_xdraw + xcalc && mouse_x <= global.computersurf_xdraw + xcalc + 912*xscale && mouse_y >= global.computersurf_ydraw + ycalc && mouse_y <= global.computersurf_ydraw + ycalc + 513*yscale && global.game_state == 0 && !global.in_shop
+	if mouse_x >= global.computersurf_xdraw + xcalc && mouse_x <= global.computersurf_xdraw + xcalc + 912*xscale && mouse_y >= global.computersurf_ydraw + ycalc && mouse_y <= global.computersurf_ydraw + ycalc + 513*yscale && global.game_state == 0 && !global.in_shop && !global.game_paused
 		global.stream_hovering = i;
 		
 	screen_on++
@@ -99,9 +99,5 @@ if global.game_state == 1 {
 	draw_set_alpha(1)
 	if !surface_exists(global.streamsurf[global.streamer_on])
 		global.streamsurf[global.streamer_on] = surface_create(912, 513)
-	draw_surface(global.streamsurf[global.streamer_on], 0, 0)
+	draw_surface(global.streamsurf[global.streamer_on], stream_x, stream_y);
 }
-
-draw_set_halign(fa_right);
-
-draw_text(912, 88, "FPS: " + string(fps));

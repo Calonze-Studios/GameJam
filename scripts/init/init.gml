@@ -30,10 +30,20 @@ global.night_on = 0; // Which night you're currently on
 
 global.game_state = 0; // 0 - not watching stream
 					   // 1 - watching stream
-					   // 2 - in shop
-					   // 3 - pause menu
 					   
 global.stream_hovering = -1;
+
+global.gold = 0;
+global.inventory = [];
+global.inventory_item_count = [];
+
+global.shop = [];
+global.shop_item_count = [];
+
+scr_add_item_to_shop(0, 2)
+
+global.cart = [];
+global.cart_item_count = [];
 
 global.in_shop = 0;
 global.game_paused = 0;

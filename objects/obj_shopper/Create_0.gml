@@ -1,4 +1,20 @@
 state = 0;
-x = -sprite_width
+x = -sprite_width;
 
-depth = 97
+menu = 0 
+// 0 - shop
+// 1 - loading
+// 2 - cart
+
+clickstate = 0;
+target = 0;
+target_count = 1;
+buying = 0;
+
+offset = 0;
+
+loadingframe = 0;
+
+depth = 97;
+
+phonesurf = surface_create(432, 652);

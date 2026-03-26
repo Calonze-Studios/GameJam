@@ -1,29 +1,6 @@
-var phone_frame = 0;
-var meeting = 0;
-
-if position_meeting(mouse_x, mouse_y, id) {
-	phone_frame = 1;
-	meeting = 1;
+if surface_get_target() != application_surface {
+	surface_reset_target();
+	surface_set_target(application_surface);
 }
 	
-draw_sprite(spr_phone, phone_frame, x, y)
-
-if meeting && mouse_check_button_pressed(mb_left) {
-	if !global.in_shop {
-		
-		global.in_shop = 1;
-		
-		if !instance_exists(obj_shopper)
-			instance_create_depth(0, 0, 100, obj_shopper);
-		else
-			obj_shopper.state = 0;
-			
-	} else {
-		global.in_shop = 0;
-		
-		if instance_exists(obj_shopper) {
-			obj_shopper.state = 2;
-		}
-		
-	}
-}
+draw_sprite_ext(_state == 0 ? spr_phone : spr_phone_on, frame, x - ((sprite_width * xscale) - sprite_width)/2, y + drawyoffset - ((sprite_height * yscale) - sprite_height)/2, xscale, yscale, 0, c_white, 1)

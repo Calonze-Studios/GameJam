@@ -8,3 +8,5 @@ streamer_adding_rate = [0]; // The rate at which the streamer speed turns to nor
 streamer_alarmed_once = [0]; // Variable to see if you've triggered alarm[2] already
 streamer_trigger = [0]
 streamer_trigger_timer = [0]
+
+chatsurf = surface_create(259, 323)
