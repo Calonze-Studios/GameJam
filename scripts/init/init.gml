@@ -11,6 +11,7 @@ global.chat_messages[0] = []; // Each streamer's chat's messages
 
 global.streamer_game = [0]; // Which game each streamer is playing
 global.streamer_game_state = [0]; // The state of each streamer's game
+
 global.streamer_sprite = [0] // Which set of sprites each streamer is using
 global.streamer_on = 0; // Which streamer you're currently watching
 global.streamers_unlocked = 1; // How many streamers you currently have
@@ -28,8 +29,11 @@ global.computersurf_ydraw = 117;
 
 global.night_on = 0; // Which night you're currently on
 
-global.game_state = 0; // 0 - not watching stream
-					   // 1 - watching stream
+// 0 - not watching stream
+#macro GS_NOT_WATCHING 0
+// 1 - watching stream
+#macro GS_WATCHING 1
+global.game_state = GS_NOT_WATCHING;   
 					   
 global.stream_hovering = -1;
 
@@ -50,5 +54,6 @@ global.game_paused = 0;
 
 global.font = font_add_sprite_ext(spr_egg_font, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.:!?,;'\"()[]{}$@#/\\|%^*-+=<>~01234567890", 0, 1);
 
-window_set_size(1600, 900);
+// window_set_size(800,450);
+//surface_resize(application_surface,1600,900);
 //window_center();

@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "banter functions",
-    "path": "folders/Scripts/banter functions.yy",
+    "path": "folders/Rooms/Scripts/banter functions.yy",
   },
 }
