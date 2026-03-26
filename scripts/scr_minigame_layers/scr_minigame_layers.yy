@@ -6,6 +6,6 @@
   "isCompatibility": false,
   "parent": {
     "name": "minigame",
-    "path": "folders/Rooms/Scripts/minigame.yy",
+    "path": "folders/Scripts/minigame.yy",
   },
 }
