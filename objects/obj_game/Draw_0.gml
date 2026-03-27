@@ -1,4 +1,5 @@
-if (target_stream == 0) exit;
+if (target_stream == 0) {
+}
 if target_stream == global.stream_hovering || target_stream == global.streamer_on {
 	surface_set_target(states[current_state].render_surface);
 	draw_set_color(c_white);
@@ -45,8 +46,6 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	
 	surface_reset_target();
 	
-	surface_set_target(application_surface);
-	
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
 	draw_set_font(global.font_2x);
@@ -56,34 +55,19 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	
 	var base_offset = room_height-(150/2)-backseat_ui_offset-20;
 	
-	draw_sprite_ext(spr_dark_nineslice,0,20,base_offset,4,0.5,0,c_white,1);
+	var option_surface = surface_create(600,900);
+	surface_set_target(option_surface);
 	
-	var message_surf = surface_create(600,40);
-	
-	surface_reset_target();
-	surface_set_target(message_surf);
-	
-	var x_offset = 0;
-	
-	if (string_width(backseat_message) > 600) x_offset = string_width(backseat_message)-600;
-	
-	draw_text(-x_offset,0,backseat_message);
-	
-	surface_reset_target();
-	surface_set_target(application_surface);
-	
-	draw_surface(message_surf,40,base_offset+25);
-	
-	surface_free(message_surf);
-
-
 	var y_offset = 0;
 	var chosen_option = -2;
 	var key_pressed = keyboard_check_pressed(vk_anykey);
+	var typing_allowed = is_backseating;
+	var match = [];
+	var matches = 0;
 	for (var i=0;i<array_length(states[current_state].options);i++){
 		var option = states[current_state].options[i];
 		
-		if (key_pressed){
+		if (key_pressed && typing_allowed){
 			backseat_message = keyboard_string;
 			if (string_lower(option) == string_lower(backseat_message)){
 				chosen_option = i;
@@ -93,18 +77,59 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		if (!string_starts_with(string_lower(option),string_lower(backseat_message)) && backseat_message != ""){
 			continue;
 		}
+		match = [i,option];
+		matches++;
 		
-		draw_text(20,base_offset-30-y_offset,option);
-		y_offset += 30;
+		draw_text(5,y_offset,string(i+1)+". "+option);
+		y_offset += 35;
 	}
+	y_offset += 20;
 	
-	if (keyboard_check_pressed(vk_enter)){
+	surface_reset_target();
+	surface_set_target(application_surface);
+	
+	if (matches > 0) draw_sprite_ext(spr_dark_nineslice,0,20,base_offset-y_offset,4,(y_offset+10)/150,0,c_white,1);
+	draw_sprite_ext(spr_undark_nineslice,0,20,base_offset,4,0.5,0,c_white,1);
+	if (matches > 0) draw_surface(option_surface,40,base_offset-y_offset+20);
+	
+	var message_surf = surface_create(600,40);
+	
+	surface_reset_target();
+	surface_set_target(message_surf);
+	
+	var x_offset = 0;
+	
+	show_debug_message(matches);
+	
+	if (string_width(backseat_message) > 600) x_offset = string_width(backseat_message)-600;
+	
+	if (matches == 1) {
+		draw_set_alpha(0.75);
+		var _start = backseat_message;
+		var _start_at = string_length(_start)+1;
+		var _end = string_copy(match[1],_start_at,string_length(match[1])-_start_at+1);
+		draw_text(0,0,_start+_end);
+		draw_set_alpha(1);
+	}
+	draw_text(-x_offset,0,backseat_message);
+	
+	surface_reset_target();
+	surface_set_target(application_surface);
+	
+	draw_surface(message_surf,40,base_offset+25);
+	
+	surface_free(message_surf);
+	
+	if (keyboard_check_pressed(vk_enter) && typing_allowed){
 		var is_correct = false;
+		if (matches == 1) chosen_option = match[0];
+		var chat_message = backseat_message;
+		if (chosen_option >= 0) chat_message = states[current_state].options[chosen_option];
 		for (var i=0;i<array_length(states[current_state].correct_options);i++){
 			var option_idx = states[current_state].correct_options[i];
 			if (chosen_option == option_idx) is_correct = true;
 		}
-		array_push(global.chat_messages[target_stream],"PlayerName: "+backseat_message);
+		array_push(global.chat_messages[target_stream],"PlayerName: "+chat_message);
 		backseat_message = "";
 		keyboard_string = "";
 		if (is_correct){

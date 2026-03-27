@@ -85,6 +85,7 @@
     {"id":{"name":"shd_bulge","path":"shaders/shd_bulge/shd_bulge.yy",},"order":0,},
     {"id":{"name":"streamer states","path":"notes/streamer states/streamer states.yy",},"order":2,},
     {"id":{"name":"spr_placeholder_phone","path":"sprites/spr_placeholder_phone/spr_placeholder_phone.yy",},"order":0,},
+    {"id":{"name":"spr_dark_nineslice_nooutline","path":"sprites/spr_dark_nineslice_nooutline/spr_dark_nineslice_nooutline.yy",},"order":2,},
     {"id":{"name":"scr_banter_streamer_say","path":"scripts/scr_banter_streamer_say/scr_banter_streamer_say.yy",},"order":2,},
     {"id":{"name":"spr_crt_3","path":"sprites/spr_crt_3/spr_crt_3.yy",},"order":4,},
     {"id":{"name":"room_main","path":"rooms/room_main/room_main.yy",},"order":0,},

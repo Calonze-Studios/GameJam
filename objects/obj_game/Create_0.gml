@@ -19,8 +19,8 @@ state.add_layer("fg",spr_mg_pkmn_idle_fg,30);
 state.set_timer_seconds(5);
 
 state = add_minigame_state(id,"battle_fire_idle")
-state.add_option("Punch",true);
-state.add_option("Do nothing",false);
+state.add_option("Attack the Fire!",true);
+state.add_option("Jus sit there doing nothing like a dumbass",false);
 state.correct_state = "battle_fire_win";
 state.wrong_state = "battle_fire_lose";
 state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
