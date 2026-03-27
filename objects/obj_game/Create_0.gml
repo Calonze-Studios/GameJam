@@ -45,8 +45,10 @@ function switch_to_state_idx(idx){
 	alarm[0] = states[current_state].expiry_timer;
 	if (states[current_state].type == MG_STATE_QTEVENT) {
 		is_backseating = true;
+		global.typing_mode = true;
 	} else {
 		is_backseating = false;
+		global.typing_mode = false;
 	}
 	/*if (has_transitions){
 		transition_active = true;
