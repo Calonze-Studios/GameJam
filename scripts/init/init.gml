@@ -30,7 +30,10 @@ global.night_on = 0; // Which night you're currently on
 
 global.game_state = 0; // 0 - not watching stream
 					   // 1 - watching stream
-					   
+
+global.score = 0;
+global.highscore = 0;
+
 global.stream_hovering = -1;
 
 global.gold = 0;
@@ -49,6 +52,7 @@ global.in_shop = 0;
 global.game_paused = 0;
 
 global.font = font_add_sprite_ext(spr_egg_font, "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.:!?,;'\"()[]{}$@#/\\|%^*-+=<>~01234567890", 0, 1);
+draw_set_font(global.font)
 
 window_set_size(1600, 900);
 //window_center();

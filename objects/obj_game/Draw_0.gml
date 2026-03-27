@@ -27,7 +27,5 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		global.streamer_game_state[target_stream] += 1;
 	}
 	
-	show_debug_message(global.streamer_game_state[target_stream]);
-	
 	surface_reset_target()
 }

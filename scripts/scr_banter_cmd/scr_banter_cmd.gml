@@ -3,7 +3,7 @@ function scr_banter_cmd(streamer, command, command_arg1 = 0){
 	
 	if instance_exists(obj_banterer) {
 		for (var i = 0; i < instance_number(obj_banterer); i++) {
-			if variable_instance_get(instance_find(obj_banterer, i), "streamer_target") == streamer {
+			if instance_find(obj_banterer, i).streamer_target == streamer {
 				target_banterer = instance_find(obj_banterer, i);
 				break;
 			}

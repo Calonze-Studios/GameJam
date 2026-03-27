@@ -1,7 +1,7 @@
 function scr_banter_begin(streamer){
 	if instance_exists(obj_banterer) {
 		for (var i = 0; i < instance_number(obj_banterer); i++) {
-			if variable_instance_get(instance_find(obj_banterer, i), "streamer_target") == streamer {
+			if instance_find(obj_banterer, i).streamer_target == streamer {
 				instance_destroy(instance_find(obj_banterer, i))
 				break;
 			}
