@@ -1,5 +1,4 @@
-if (target_stream == 0) {
-}
+if (target_stream == 0) exit; // oh thats why it broke oops
 if target_stream == global.stream_hovering || target_stream == global.streamer_on {
 	surface_set_target(states[current_state].render_surface);
 	draw_set_color(c_white);
