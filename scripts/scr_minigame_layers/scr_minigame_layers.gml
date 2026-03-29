@@ -8,4 +8,5 @@ function MinigameLayer(_name,_sprite,_framerate) constructor{
 	y_offset = 0;
 	timer = 0; 
 	current_frame = 0;
+	difficulty = MG_DIFFICULTY_ANY;
 }

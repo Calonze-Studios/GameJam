@@ -64,8 +64,10 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		surface_set_target(global.streamsurf[a])
 	
 		draw_sprite(streamer_sprite[a], streamer_frame[a], 4, 2);
-		if (variable_instance_exists(global.streamer_game[a],"my_surface")){
-			draw_surface(global.streamer_game[a].my_surface,270,18);
+		if (instance_exists(global.streamer_game[a])){
+			if (variable_instance_exists(global.streamer_game[a],"my_surface")){
+				draw_surface(global.streamer_game[a].my_surface,270,18);
+			}
 		} else {
 			draw_text(270,18,"There is no game.");
 		}
