@@ -1,1 +1,0 @@
-canhover = 1;

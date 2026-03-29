@@ -1,2 +1,0 @@
-0 - idle
-1 - angry
