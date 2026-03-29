@@ -4,6 +4,8 @@ previous_state = 0;
 my_surface = surface_create(640,480);
 states = [];
 
+difficulty = MG_DIFFICULTY_EASY;
+
 //has_transitions = true;
 //transition_active = false;
 //transition_fade = 0;
@@ -16,6 +18,7 @@ backseat_ui_offset_t = -400;
 var state = add_minigame_state(id,"idle")
 state.add_layer("bg",spr_mg_pkmn_idle_bg,30);
 state.add_layer("fg",spr_mg_pkmn_idle_fg,30);
+
 state.set_timer_seconds(5);
 
 state = add_minigame_state(id,"battle_fire_idle")
@@ -23,6 +26,7 @@ state.add_option("Attack the Fire!",true);
 state.add_option("Jus sit there doing nothing like a dumbass",false);
 state.correct_state = "battle_fire_win";
 state.wrong_state = "battle_fire_lose";
+state.only_once = true;
 state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
 state.add_layer("fg",spr_mg_pkmn_firebattle_idle,2);
 state.type = MG_STATE_QTEVENT;
@@ -42,6 +46,7 @@ function switch_to_state_idx(idx){
 	backseat_message = "";
 	previous_state = current_state;
 	current_state = idx;
+	states[current_state].visited = true;
 	alarm[0] = states[current_state].expiry_timer;
 	if (states[current_state].type == MG_STATE_QTEVENT) {
 		is_backseating = true;
@@ -56,10 +61,30 @@ function switch_to_state_idx(idx){
 	}*/
 }
 
-function get_states_of_type(type) {
+function flush_only_once(){
+	for (var i=0;i<array_length(states);i++){
+		if (states[i].type == MG_STATE_QTEVENT){
+			states[i].visited = false;
+		}
+	}
+}
+
+function get_states() {
 	var ret = [];
 	for (var i=0;i<array_length(states);i++){
-		if (states[i].type == type){
+		if (states[i].difficulty == difficulty || states[i].difficulty == MG_DIFFICULTY_ANY){
+			if (states[i].only_once && states[i].visited) continue;
+			array_push(ret,i);
+		}
+	}
+	return ret;
+}
+
+function get_states_of_type(type) {
+	var ret = [];
+	var _states = get_states();
+	for (var i=0;i<array_length(_states);i++){
+		if (states[_states[i]].type == type){
 			array_push(ret,i);
 		}
 	}
@@ -69,9 +94,20 @@ function get_states_of_type(type) {
 function switch_to_random_state(type=-1) {
 	if (type >= 0) {
 		var _states = get_states_of_type(type);
+		if (array_length(_states) == 0) {
+			alarm[0] = 15;
+			flush_only_once();
+			return;
+		}
 		switch_to_state_idx(_states[irandom_range(0,array_length(_states)-1)]);
 	} else {
-		switch_to_state_idx(irandom_range(0,array_length(states)-1));
+		var _states = get_states();
+		if (array_length(_states) == 0) {
+			alarm[0] = 15;
+			flush_only_once();
+			return;
+		}
+		switch_to_state_idx(_states[irandom_range(0,array_length(_states)-1)]);
 	}
 }
 
@@ -83,4 +119,4 @@ function switch_to_state_name(_name){
 	}
 }
 
-switch_to_random_state(MG_STATE_QTEVENT);
+switch_to_random_state(MG_STATE_IDLE);

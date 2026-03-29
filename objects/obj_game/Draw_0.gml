@@ -7,6 +7,7 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	
 	for (var i=0;i<array_length(states[current_state].layers);i++) {
 		var _layer = states[current_state].layers[i];
+		if (_layer.difficulty != MG_DIFFICULTY_ANY && _layer.difficulty != difficulty) continue;
 		draw_sprite(_layer.sprite,_layer.current_frame,_layer.x_offset,_layer.y_offset);
 		
 		var _frametime = 1/_layer.framerate;
@@ -63,8 +64,10 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	var typing_allowed = is_backseating;
 	var match = [];
 	var matches = 0;
-	for (var i=0;i<array_length(states[current_state].options);i++){
-		var option = states[current_state].options[i];
+	var options = states[current_state].get_options(false,difficulty);
+	for (var i=0;i<array_length(options);i++){
+		var _option = options[i];
+		var option = _option.text;
 		
 		if (key_pressed && typing_allowed){
 			backseat_message = keyboard_string;
@@ -76,7 +79,7 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		if (!string_starts_with(string_lower(option),string_lower(backseat_message)) && backseat_message != ""){
 			continue;
 		}
-		match = [i,option];
+		match = [i,option,_option];
 		matches++;
 		
 		draw_text(5,y_offset,string(i+1)+". "+option);
@@ -121,12 +124,20 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	
 	if (keyboard_check_pressed(vk_enter) && typing_allowed){
 		var is_correct = false;
-		if (matches == 1) chosen_option = match[0];
 		var chat_message = backseat_message;
-		if (chosen_option >= 0) chat_message = states[current_state].options[chosen_option];
-		for (var i=0;i<array_length(states[current_state].correct_options);i++){
-			var option_idx = states[current_state].correct_options[i];
-			if (chosen_option == option_idx) is_correct = true;
+		if (matches == 1) {
+			chat_message = states[current_state].get_options(false,difficulty)[match[0]].text;
+			var correct_options = states[current_state].get_options(true,difficulty);
+			for (var i=0;i<array_length(correct_options);i++){
+				var _correct_option = correct_options[i];
+				if (match[2] == _correct_option) is_correct = true;
+			}
+		} else {
+			var correct_options = states[current_state].get_options(true,difficulty);
+			for (var i=0;i<array_length(correct_options);i++){
+				var _correct_option = correct_options[i];
+				if (string_lower(backseat_message) == string_lower(_correct_option.text)) is_correct = true;
+			}
 		}
 		array_push(global.chat_messages[target_stream],"PlayerName: "+chat_message);
 		backseat_message = "";
