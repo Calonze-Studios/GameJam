@@ -5,4 +5,4 @@ glow_state = 0;
 
 depth = 99;
 
-bulge = 1;
+bulge = 0;
