@@ -1,5 +1,11 @@
 if (target_stream == 0) exit; // oh thats why it broke oops
 if target_stream == global.stream_hovering || target_stream == global.streamer_on {
+	if (!surface_exists(states[current_state].render_surface)) {
+		states[current_state].render_surface = surface_create(640,480);
+	}
+	if (!surface_exists(my_surface)) {
+		my_surface = surface_create(640,480);
+	}
 	surface_set_target(states[current_state].render_surface);
 	draw_set_color(c_white);
 	//draw_rectangle(270, 18, 910, 498, 0);

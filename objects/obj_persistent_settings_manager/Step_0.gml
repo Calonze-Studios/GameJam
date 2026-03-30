@@ -1,6 +1,8 @@
 var a = window_get_fullscreen()
 
-window_set_fullscreen(scr_get_setting_by_name("Full screen"));
+if (a != scr_get_setting_by_name("Full screen")){
+	window_set_fullscreen(scr_get_setting_by_name("Full screen"));
+}
 
 var sep = 0;
 for (var i = 0; i < string_length(scr_get_setting_by_name("Game Size")); i++) {
