@@ -6,6 +6,15 @@ if option_sel != -1 {
 		alarm_triggered = 1;
 		alarm[0] = 5;
 	}
+	
+	if option_sel == 2 && !settinged {
+		settinged = 1;
+		instance_create_depth(0, 0, -999, obj_settings)
+	}
+	if settinged && !instance_exists(obj_settings) {
+		option_sel = -1
+		settinged = 0;
+	}
 }
 
 if keyboard_check_pressed(vk_anykey) {

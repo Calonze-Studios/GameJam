@@ -1,10 +1,10 @@
 if (target_stream == 0) exit; // oh thats why it broke oops
 if target_stream == global.stream_hovering || target_stream == global.streamer_on {
 	surface_set_target(states[current_state].render_surface);
-	surface_set_target(my_surface);
 	draw_set_color(c_white);
 	//draw_rectangle(270, 18, 910, 498, 0);
 	//draw_rectangle(0, 0, 910, 498, 0);
+	
 	for (var i=0;i<array_length(states[current_state].layers);i++) {
 		var _layer = states[current_state].layers[i];
 		if (_layer.difficulty != MG_DIFFICULTY_ANY && _layer.difficulty != difficulty) continue;
@@ -22,7 +22,6 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		_layer.timer += 1/fps;
 	}
 	
-	
 	if (debug_keyboard_check_pressed(ord("N"))){
 		current_state -= 1;
 	}
@@ -31,7 +30,6 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	}
 	
 	surface_reset_target()
-	
 	
 	surface_set_target(my_surface);
 	
@@ -147,6 +145,7 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		if (is_correct){
 			switch_to_state_name(states[current_state].correct_state);
 		} else {
+			global.lives--
 			switch_to_state_name(states[current_state].wrong_state);
 		}
 	}

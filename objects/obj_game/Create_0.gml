@@ -20,13 +20,10 @@ state.add_layer("bg",spr_mg_pkmn_idle_bg,30);
 state.add_layer("fg",spr_mg_pkmn_idle_fg,30);
 
 state.set_timer_seconds(5);
-state.add_layer("bg",spr_mg_pkmn_idle_bg,15);
-state.add_layer("fg",spr_mg_pkmn_idle_fg,15);
+
 state = add_minigame_state(id,"battle_fire_idle")
 state.add_option("Attack the Fire!",true);
 state.add_option("Jus sit there doing nothing like a dumbass",false);
-state.add_option("Punch",true);
-state.add_option("Do nothing",false);
 state.correct_state = "battle_fire_win";
 state.wrong_state = "battle_fire_lose";
 state.only_once = true;
@@ -34,14 +31,11 @@ state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
 state.add_layer("fg",spr_mg_pkmn_firebattle_idle,2);
 state.type = MG_STATE_QTEVENT;
 
-state.add_layer("bg",spr_mg_pkmn_battle_bg,15);
-state.add_layer("fg",spr_mg_pkmn_firebattle_idle,15);
 state = add_minigame_state(id,"battle_fire_win")
 state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
 state.add_layer("fg",spr_mg_pkmn_firebattle_win,2);
 state.type = MG_STATE_RESULT;
-state.add_layer("bg",spr_mg_pkmn_battle_bg,15);
-state.add_layer("fg",spr_mg_pkmn_firebattle_win,15);
+
 state = add_minigame_state(id,"battle_fire_lose")
 state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
 state.add_layer("fg",spr_mg_pkmn_firebattle_lose,2);
@@ -74,8 +68,6 @@ function flush_only_once(){
 		}
 	}
 }
-state.add_layer("bg",spr_mg_pkmn_battle_bg,15);
-state.add_layer("fg",spr_mg_pkmn_firebattle_lose,15);
 
 function get_states() {
 	var ret = [];
@@ -122,7 +114,7 @@ function switch_to_random_state(type=-1) {
 function switch_to_state_name(_name){
 	for (var i=0;i<array_length(states);i++){
 		if (states[i].name == _name){
-			global.streamer_game_state[target_stream] = i;
+			switch_to_state_idx(i);
 		}
 	}
 }

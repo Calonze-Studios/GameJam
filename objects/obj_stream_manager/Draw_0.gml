@@ -66,6 +66,9 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		draw_sprite(streamer_sprite[a], streamer_frame[a], 4, 2);
 		if (instance_exists(global.streamer_game[a])){
 			if (variable_instance_exists(global.streamer_game[a],"my_surface")){
+				if (!surface_exists(global.streamer_game[a].my_surface))
+					global.streamer_game[a].my_surface = surface_create(640, 480);
+				
 				draw_surface(global.streamer_game[a].my_surface,270,18);
 			}
 		} else {

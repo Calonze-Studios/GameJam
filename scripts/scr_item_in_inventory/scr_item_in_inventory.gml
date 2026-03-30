@@ -1,0 +1,12 @@
+function scr_item_in_inventory(_id) {
+var array_has = 0;
+	
+	for (var i = 0; i < array_length(global.cart); i++) {
+		if global.inventory[i] == _id {
+			array_has = 1;
+			break;
+		}
+	}
+	
+	return array_has
+}

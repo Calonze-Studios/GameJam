@@ -16,6 +16,7 @@ function scr_setting_add(key, section, name, description, type, default_val = 0,
 		array_push(global.settings_type, type);
 		array_push(global.settings_options, options);
 		array_push(global.settings_section, section)
+		array_push(global.settings_key, key);
 		if string_lower(type) != "string"
 			array_push(global.settings_value, ini_read_real(section, key, default_val));
 		else
@@ -35,5 +36,7 @@ function scr_setting_add(key, section, name, description, type, default_val = 0,
 	} else {
 		return ini_read_string("Settings", key, string(default_val))
 	}
+	
+	ini_close();
 	
 }

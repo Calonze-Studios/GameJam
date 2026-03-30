@@ -12,4 +12,6 @@ function scr_setting_edit_value (key, section, name, value){
 			break;
 		}
 	}
+	
+	ini_close();
 }

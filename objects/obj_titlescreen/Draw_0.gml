@@ -55,14 +55,18 @@ var button = [0];
 
 for (var i = 0; i < array_length(options); i++) {
 	if i != 0 {
-		button[i] = scr_draw_button_sprite(1550, 150 + (200 * i), options[i], spr_dark_nineslice, #d1d1d1, spr_undark_nineslice, c_white, 3, 3, 1)
-		if (button[i] || pressing == i) && mouse_check_button(mb_left) && pressing != -1 {
+		button[i] = scr_draw_button_sprite(1550, 150 + (200 * i), options[i], spr_dark_nineslice, #d1d1d1, option_sel == -1 ? spr_undark_nineslice : spr_dark_nineslice, option_sel == -1 ? c_white : #d1d1d1, 3, 3, 1, c_black, option_sel == -1)
+		if option_sel != -1
+			button[i] = 0;
+		if (button[i] || pressing == i) && mouse_check_button(mb_left) && pressing != -1 && option_sel == -1 {
 			pressing = i;
 		}
-		if ((button[i] && mouse_check_button_released(mb_left) && option_sel == -1) || (pressing == i && !button[i])) && pressing != -1
+		if ((button[i] && mouse_check_button_released(mb_left) && option_sel == -1) || (pressing == i && !button[i])) && pressing != -1 && option_sel == -1
 			option_sel = i
 	} else {
 		button[i] = scr_draw_button_sprite(1550, 150 + (200 * i), options[i], spr_dark_nineslice, c_grey, spr_dark_nineslice, c_grey, 3, 3, 1, c_black, 0)
+		if option_sel != -1
+			button[i] = 0;
 		//draw_set_color(c_white)
 		//scr_draw_text_transformed_outline(1550, 215, "(Story mode not available\nin gamejam demo! Sorry!)", 2, 2, 1)
 	}

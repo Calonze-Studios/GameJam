@@ -40,7 +40,7 @@ if state == 1 {
 			
 			var hover = 0;
 			
-			if mouse_x >= x + 50 && mouse_x < x + 482 && mouse_y >= y + 177 + _offset && mouse_y < y + 324 + _offset  && clickstate = 0 && !global.game_paused
+			if mouse_x >= x + 60 && mouse_x < x + 474 && mouse_y >= y + 177 + _offset && mouse_y < y + 324 + _offset  && clickstate = 0 && !global.game_paused
 				hover = 1;
 				
 			if global.shop_item_count[i] <= 0
@@ -615,6 +615,22 @@ if state == 1 {
 		draw_sprite(spr_lameazing_shop, 0, x + 50, y + 70);
 	if menu == 2
 		draw_sprite(spr_lameazing_cart, 0, x + 50, y + 70);
+	if menu != 1 {
+		draw_set_font(font_mediumshop)
+		draw_set_valign(fa_top)
+		draw_set_halign(fa_left)
+		
+		draw_set_color(#2c3438)
+		draw_text(x + 100, y + 66, global.gold)
+		draw_text(x + 100, y + 67, global.gold)
+		draw_text(x + 100, y + 68, global.gold)
+		draw_text(x + 100, y + 69, global.gold)
+		draw_text(x + 100, y + 70, global.gold)
+		
+		draw_set_color(#64878c)
+		draw_text(x + 100, y + 65, global.gold)
+	}
+	
 	
 } else {
 	

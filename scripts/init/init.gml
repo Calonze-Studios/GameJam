@@ -37,11 +37,21 @@ global.settings_type = [];
 global.settings_value = [];
 global.settings_options = [];
 global.settings_section = [];
+global.settings_key = [];
+
+scr_setting_add("fullscreen", "Display", "Full screen", "Enable or disable FULL SCREEN! Full screen is recommended for the game to look better, but not necessary.", "bool", 1)
+scr_setting_add("size", "Display", "Game Size", "Change your screen size! 1600x900 recommended, but could cause scaling issues on smaller monitors.", "string", "1600x900", ["1600x900", "800x450"])
+
+global.screen_height = 1600;
+global.screen_width = 900;
 
 global.score = 0;
 global.highscore = 0;
 
 global.stream_hovering = -1;
+
+global.lives = 3;
+global.immunity = 0;
 
 global.gold = 0;
 global.inventory = [];
