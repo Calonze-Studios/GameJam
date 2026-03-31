@@ -9,7 +9,7 @@ global.chat_rate_norm = [30]; // The normal speed at which each streamer's chat 
 global.chat_rate_fastest = [7] // The fastest speed at which each streamer's chat can go
 global.chat_messages[0] = []; // Each streamer's chat's messages
 
-global.streamer_game = [0]; // Which game each streamer is playing
+global.streamer_game = []; // Which game each streamer is playing
 global.streamer_game_state = [0]; // The state of each streamer's game
 global.streamer_sprite = [0] // Which set of sprites each streamer is using
 global.streamer_on = 0; // Which streamer you're currently watching

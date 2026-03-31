@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_draw_text_outline",
+  "name": "scr_minigames",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "minigame",
+    "path": "folders/Scripts/minigame.yy",
   },
 }

@@ -88,9 +88,13 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		}
 	}
 	
-	if global.streamer_game_state[a] != 0
-		draw_sprite(spr_placeholder_game_in_progress, 0, xcalc, ycalc)
+	var has_qt = false;
+	if (instance_exists(global.streamer_game[a])){
+		has_qt = global.streamer_game[a].states[global.streamer_game[a].current_state].type == MG_STATE_QTEVENT;
+	}
 	
+	if has_qt
+		draw_sprite(spr_placeholder_game_in_progress, 0, xcalc, ycalc)
 	
 	
 	screen_on++
