@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "GameJam",
-    "path": "GameJam.yyp",
+    "name": "games",
+    "path": "folders/Sprites/games.yy",
   },
 }

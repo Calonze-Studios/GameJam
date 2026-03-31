@@ -6,6 +6,8 @@ menu = 0
 // 1 - loading
 // 2 - cart
 
+pressable = 1;
+
 clickstate = 0;
 target = 0;
 target_count = 1;
@@ -17,4 +19,4 @@ loadingframe = 0;
 
 depth = 97;
 
-phonesurf = surface_create(432, 652);
+phonesurf = surface_create(432, 619);

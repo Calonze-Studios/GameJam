@@ -1,5 +1,10 @@
-if (target_stream == 0) exit; // oh thats why it broke oops
-if target_stream == global.stream_hovering || target_stream == global.streamer_on {
+if target_stream == global.stream_hovering || (target_stream == global.streamer_on && global.game_state == 1) {
+	if (!surface_exists(states[current_state].render_surface)) {
+		states[current_state].render_surface = surface_create(640,480);
+	}
+	if (!surface_exists(my_surface)) {
+		my_surface = surface_create(640,480);
+	}
 	surface_set_target(states[current_state].render_surface);
 	draw_set_color(c_white);
 	//draw_rectangle(270, 18, 910, 498, 0);
@@ -101,7 +106,7 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 	
 	var x_offset = 0;
 	
-	show_debug_message(matches);
+	//show_debug_message(matches);
 	
 	if (string_width(backseat_message) > 600) x_offset = string_width(backseat_message)-600;
 	
@@ -143,8 +148,15 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		backseat_message = "";
 		keyboard_string = "";
 		if (is_correct){
+			global.last_guess = 1;
+			scr_streamer_change_state(1,target_stream);
+			scr_chat_change_state(1,target_stream);
 			switch_to_state_name(states[current_state].correct_state);
 		} else {
+			global.last_guess = 0;
+			scr_remove_life();
+			scr_streamer_change_state(2,target_stream);
+			scr_chat_change_state(2,target_stream);
 			switch_to_state_name(states[current_state].wrong_state);
 		}
 	}

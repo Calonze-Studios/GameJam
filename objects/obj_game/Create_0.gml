@@ -4,6 +4,8 @@ previous_state = 0;
 my_surface = surface_create(640,480);
 states = [];
 
+not_switching = true;
+
 difficulty = MG_DIFFICULTY_EASY;
 
 //has_transitions = true;
@@ -15,42 +17,29 @@ is_backseating = false;
 backseat_ui_offset = -400;
 backseat_ui_offset_t = -400;
 
-var state = add_minigame_state(id,"idle")
-state.add_layer("bg",spr_mg_pkmn_idle_bg,30);
-state.add_layer("fg",spr_mg_pkmn_idle_fg,30);
-
-state.set_timer_seconds(5);
-
-state = add_minigame_state(id,"battle_fire_idle")
-state.add_option("Attack the Fire!",true);
-state.add_option("Jus sit there doing nothing like a dumbass",false);
-state.correct_state = "battle_fire_win";
-state.wrong_state = "battle_fire_lose";
-state.only_once = true;
-state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
-state.add_layer("fg",spr_mg_pkmn_firebattle_idle,2);
-state.type = MG_STATE_QTEVENT;
-
-state = add_minigame_state(id,"battle_fire_win")
-state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
-state.add_layer("fg",spr_mg_pkmn_firebattle_win,2);
-state.type = MG_STATE_RESULT;
-
-state = add_minigame_state(id,"battle_fire_lose")
-state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
-state.add_layer("fg",spr_mg_pkmn_firebattle_lose,2);
-state.type = MG_STATE_RESULT;
+scr_load_minigame(target_stream);
 
 function switch_to_state_idx(idx){
+	difficulty = irandom_range(MG_DIFFICULTY_EASY,MG_DIFFICULTY_HARD);
 	keyboard_string = "";
 	backseat_message = "";
 	previous_state = current_state;
 	current_state = idx;
 	states[current_state].visited = true;
 	alarm[0] = states[current_state].expiry_timer;
+	if (global.rush_hour) {
+		alarm[0] /= 2;
+	}
 	if (states[current_state].type == MG_STATE_QTEVENT) {
+		scr_streamer_change_state(3,target_stream);
+		scr_chat_change_state(3,target_stream);
 		is_backseating = true;
 		global.typing_mode = true;
+	} else if (states[current_state].type == MG_STATE_IDLE){
+		scr_streamer_change_state(0,target_stream);
+		scr_chat_change_state(0,target_stream);
+		is_backseating = false;
+		global.typing_mode = false;
 	} else {
 		is_backseating = false;
 		global.typing_mode = false;

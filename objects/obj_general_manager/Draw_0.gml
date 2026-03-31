@@ -21,10 +21,12 @@ if bulge == 1 {
 	draw_surface_ext(global.computersurf, global.computersurf_xdraw, global.computersurf_ydraw, 1, 1, 0, c_white, 0.9)
 }
 
+
 draw_set_halign(fa_right);
+/*
 draw_set_valign(fa_top);
 
 draw_text(1600, 88, "FPS: " + string(fps));
-
+*/	
 draw_set_valign(fa_bottom)
-draw_text_transformed(1600, 900, "GOLD - " + string(global.gold), 3, 3, 0);
+draw_text_transformed(1600, 900, "LIVES - " + string(global.lives), 3, 3, 0);

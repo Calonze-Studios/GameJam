@@ -34,10 +34,10 @@ if menu == 1 {
 	buying = 0;
 }
 
-if mouse_wheel_up() && !global.game_paused
+if mouse_wheel_up() && !global.game_paused && clickstate == 0
 	offset += 25;
 
-if mouse_wheel_down() && !global.game_paused	
+if mouse_wheel_down() && !global.game_paused && clickstate == 0
 	offset -= 25;
 	
 

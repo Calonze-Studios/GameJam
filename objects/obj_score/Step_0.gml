@@ -1,0 +1,1 @@
+yoffset -= lerp(yoffset, 0, 0.25)/2

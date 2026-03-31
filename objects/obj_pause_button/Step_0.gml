@@ -12,7 +12,7 @@ if !hover && mouse_check_button(mb_left) && sprite == 0
 else if hover && !mouse_check_button(mb_left) 
 	alarm[0] = 1;
 
-if (hover && mouse_check_button(mb_left) && canhover) || keyboard_check(vk_escape) {
+if ((hover && mouse_check_button(mb_left) && canhover) || keyboard_check(vk_escape)) && !settinged {
 	hover = 1;
 	sprite = 1;
 	drawyoffset_change += 0.5;
@@ -27,7 +27,15 @@ if drawyoffset == -1 {
 	yscale = 1;
 }
 
+if settinged && !TRULYsettinged {
+	TRULYsettinged = 1;
+	instance_create_depth(0, 0, 0, obj_settings);
+}
 
+if TRULYsettinged && !instance_exists(obj_settings) {
+	settinged = 0;
+	TRULYsettinged = 0;
+}
 
 drawyoffset += drawyoffset_change;
 drawyoffset = clamp(drawyoffset, -1, 5);
@@ -54,7 +62,7 @@ else
 
 optionsyoffset = (900 * (clickprogress)) - 900;
 
-if (hover && mouse_check_button_released(mb_left) && !keyboard_check(vk_escape) && canhover) || (hover && keyboard_check_released(vk_escape) && !mouse_check_button(mb_left)) || (alreadypressed && !hover) || resumed {
+if ((hover && mouse_check_button_released(mb_left) && !keyboard_check(vk_escape) && canhover) || (hover && keyboard_check_released(vk_escape) && !mouse_check_button(mb_left)) || (alreadypressed && !hover) || resumed) && !settinged {
 	
 	resumed = 0;
 	

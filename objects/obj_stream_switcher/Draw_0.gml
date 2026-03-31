@@ -1,5 +1,7 @@
 var rows = 1;
 
+draw_set_alpha(1);
+
 var screen_on = 0;
 
 var xscale = 0.4;
@@ -52,6 +54,7 @@ if !surface_exists(global.computersurf)
 	global.computersurf = surface_create(918, 557);
 		
 surface_set_target(global.computersurf);
+//surface_set_target(application_surface);
 draw_clear(c_black);
 
 for (var a = 0; a < global.streamers_unlocked; a++) {
@@ -85,9 +88,13 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 		}
 	}
 	
-	if global.streamer_game_state[a] != 0
-		draw_sprite(spr_placeholder_game_in_progress, 0, xcalc, ycalc)
+	var has_qt = false;
+	if (instance_exists(global.streamer_game[a])){
+		has_qt = global.streamer_game[a].states[global.streamer_game[a].current_state].type == MG_STATE_QTEVENT;
+	}
 	
+	if has_qt
+		draw_sprite(spr_placeholder_game_in_progress, 0, xcalc, ycalc)
 	
 	
 	screen_on++
@@ -101,3 +108,6 @@ if global.game_state == 1 {
 		global.streamsurf[global.streamer_on] = surface_create(912, 513)
 	draw_surface(global.streamsurf[global.streamer_on], stream_x, stream_y);
 }
+
+surface_reset_target();
+surface_set_target(application_surface);

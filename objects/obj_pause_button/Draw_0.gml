@@ -21,11 +21,11 @@ if clickprogress > 0 {
 	
 	draw_set_color(c_white);
 	draw_set_valign(fa_top);
-	scr_draw_text_transformed_outline(800, 30, "PAUSED", 2, 2, 2)
+	scr_draw_text_transformed_outline(800, optionsyoffset + 30, "PAUSED", 2, 2, 2)
 	
 	draw_set_valign(fa_center);
 	
-	if !quit && !settinged && !REALLYquit {
+	if !quit && !REALLYquit {
 		for (var i = 0; i <= 3; i++) {
 		
 			_xscale[i] = 3;
@@ -35,7 +35,7 @@ if clickprogress > 0 {
 			
 			var spr = spr_dark_nineslice;
 		
-			if mouse_x >= 800 - (string_width(options[i])*3/2) && mouse_x <= 800 + (string_width(options[i])*3/2) && mouse_y >= optionsyoffset + _y - (string_height(options[i])*3/2) && mouse_y <= optionsyoffset + _y + (string_height(options[i])*3/2)
+			if mouse_x >= 800 - (string_width(options[i])*3/2) && mouse_x <= 800 + (string_width(options[i])*3/2) && mouse_y >= optionsyoffset + _y - (string_height(options[i])*3/2) && mouse_y <= optionsyoffset + _y + (string_height(options[i])*3/2) && !settinged
 				selected = i;
 			
 			if selected == i
@@ -56,12 +56,16 @@ if clickprogress > 0 {
 			draw_sprite_ext(spr, 0, slice_x, slice_y, (string_width(options[i])*3 + 40)/sprite_get_width(spr), (string_height(options[i])*3 + 40)/sprite_get_height(spr), 0, c_white, 1);
 			scr_draw_text_transformed_outline(800, optionsyoffset + _y, options[i], _xscale[i], _yscale[i], 1);
 	
-			if selected == i && mouse_check_button_pressed(mb_left) {
+			if selected == i && mouse_check_button_released(mb_left) {
 			
 				if i == 0 {
 					resumed = 1;
 				}
-			
+				
+				if i == 1 {
+					settinged = 1;
+				}
+				
 				if i == 2 {
 					quit = 1;
 				}
@@ -72,8 +76,7 @@ if clickprogress > 0 {
 			}
 		}
 	}
-	
-	if quit || REALLYquit {
+	else if quit || REALLYquit {
 		
 		draw_set_color(c_white);
 		
@@ -116,11 +119,11 @@ if clickprogress > 0 {
 		
 		scr_draw_text_transformed_outline(1000 + (string_width("NO")*3/2) - 50, optionsyoffset + 500 + 2 * hover1, "NO", 3, 3, 1)
 	
-		if hover0 && mouse_check_button_pressed(mb_left) {
+		if hover0 && mouse_check_button_released(mb_left) {
 			quit *= 2;
 			REALLYquit *= 2;
 		}
-		if hover1 && mouse_check_button_pressed(mb_left) {
+		if hover1 && mouse_check_button_released(mb_left) {
 			quit = 0;
 			REALLYquit = 0;
 		}
