@@ -80,7 +80,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "games",
-    "path": "folders/Sprites/games.yy",
+    "name": "pkmn",
+    "path": "folders/Sprites/minigames/pkmn.yy",
   },
 }

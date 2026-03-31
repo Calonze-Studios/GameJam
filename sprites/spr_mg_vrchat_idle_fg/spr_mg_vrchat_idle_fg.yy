@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_mg_pkmn_firebattle_idle",
+  "name": "spr_mg_vrchat_idle_fg",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -10,10 +10,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 40,
-  "bbox_right": 613,
-  "bbox_top": 42,
-  "bbox_bottom": 391,
+  "bbox_left": 59,
+  "bbox_right": 359,
+  "bbox_top": 110,
+  "bbox_bottom": 377,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -28,13 +28,13 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c23260e4-a2f1-49d0-a1f1-f791267567d8",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"1078ff76-c7ba-4d06-9927-19dcc70ef467",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bf782e1c-2a90-4ed8-a600-269a17cf9aec",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"638c9038-fa3b-4b70-bf13-2b51d5d2ebb0",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_mg_pkmn_firebattle_idle",
+    "name": "spr_mg_vrchat_idle_fg",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -46,8 +46,8 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"3b31bfa5-1799-4b3c-a11d-3dca03f90339","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c23260e4-a2f1-49d0-a1f1-f791267567d8","path":"sprites/spr_mg_pkmn_firebattle_idle/spr_mg_pkmn_firebattle_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"b4b0e9ef-a1c8-47d5-b4fa-92ac88c56d00","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1078ff76-c7ba-4d06-9927-19dcc70ef467","path":"sprites/spr_mg_pkmn_firebattle_idle/spr_mg_pkmn_firebattle_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"b5f82cc5-eae6-4174-aa6c-a98ed5774692","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"bf782e1c-2a90-4ed8-a600-269a17cf9aec","path":"sprites/spr_mg_vrchat_idle_fg/spr_mg_vrchat_idle_fg.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"7b76aabc-72b0-49ae-acc7-3fb666acca18","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"638c9038-fa3b-4b70-bf13-2b51d5d2ebb0","path":"sprites/spr_mg_vrchat_idle_fg/spr_mg_vrchat_idle_fg.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
@@ -66,11 +66,11 @@
     "eventStubScript": null,
   },
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"d3ec52da-4c0f-4b3f-b496-ebe48c0f5093","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"f277277b-58f8-4fb8-8445-bf11d3fc1559","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
-    "name": "pkmn",
-    "path": "folders/Sprites/minigames/pkmn.yy",
+    "name": "idle",
+    "path": "folders/Sprites/minigames/vrchat/idle.yy",
   },
 }

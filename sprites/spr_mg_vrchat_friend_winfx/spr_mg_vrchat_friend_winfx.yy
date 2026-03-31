@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_mg_pkmn_firebattle_idle",
+  "name": "spr_mg_vrchat_friend_winfx",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -10,10 +10,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 40,
-  "bbox_right": 613,
-  "bbox_top": 42,
-  "bbox_bottom": 391,
+  "bbox_left": 242,
+  "bbox_right": 429,
+  "bbox_top": 81,
+  "bbox_bottom": 148,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -28,13 +28,13 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c23260e4-a2f1-49d0-a1f1-f791267567d8",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"1078ff76-c7ba-4d06-9927-19dcc70ef467",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"74528a34-7424-44e4-b3c4-f8029f50c6b6",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"cf003dd4-2f7e-4d09-ba59-41c4902dc976",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_mg_pkmn_firebattle_idle",
+    "name": "spr_mg_vrchat_friend_winfx",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -46,8 +46,8 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"3b31bfa5-1799-4b3c-a11d-3dca03f90339","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c23260e4-a2f1-49d0-a1f1-f791267567d8","path":"sprites/spr_mg_pkmn_firebattle_idle/spr_mg_pkmn_firebattle_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"b4b0e9ef-a1c8-47d5-b4fa-92ac88c56d00","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"1078ff76-c7ba-4d06-9927-19dcc70ef467","path":"sprites/spr_mg_pkmn_firebattle_idle/spr_mg_pkmn_firebattle_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"db9874f4-f4c3-44f6-8fec-8af08bd6b32b","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"74528a34-7424-44e4-b3c4-f8029f50c6b6","path":"sprites/spr_mg_vrchat_friend_winfx/spr_mg_vrchat_friend_winfx.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"85f18bd8-0123-4a9c-9b71-a17479995282","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"cf003dd4-2f7e-4d09-ba59-41c4902dc976","path":"sprites/spr_mg_vrchat_friend_winfx/spr_mg_vrchat_friend_winfx.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
@@ -66,11 +66,11 @@
     "eventStubScript": null,
   },
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"d3ec52da-4c0f-4b3f-b496-ebe48c0f5093","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"f138e1bf-d258-40ab-9acf-21b5fc1a2a54","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
-    "name": "pkmn",
-    "path": "folders/Sprites/minigames/pkmn.yy",
+    "name": "friend",
+    "path": "folders/Sprites/minigames/vrchat/qte/friend.yy",
   },
 }
