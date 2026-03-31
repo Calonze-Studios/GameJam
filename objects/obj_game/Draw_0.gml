@@ -70,34 +70,37 @@ if target_stream == global.stream_hovering || (target_stream == global.streamer_
 	var match = [];
 	var matches = 0;
 	var options = states[current_state].get_options(false,difficulty);
-	for (var i=0;i<array_length(options);i++){
-		var _option = options[i];
-		var option = _option.text;
+	if global.game_state == 1 {
+		for (var i=0;i<array_length(options);i++){
+			var _option = options[i];
+			var option = _option.text;
 		
-		if (key_pressed && typing_allowed){
-			backseat_message = keyboard_string;
-			if (string_lower(option) == string_lower(backseat_message)){
-				chosen_option = i;
+			if (key_pressed && typing_allowed){
+				backseat_message = keyboard_string;
+				if (string_lower(option) == string_lower(backseat_message)){
+					chosen_option = i;
+				}
 			}
-		}
 		
-		if (!string_starts_with(string_lower(option),string_lower(backseat_message)) && backseat_message != ""){
-			continue;
-		}
-		match = [i,option,_option];
-		matches++;
+			if (!string_starts_with(string_lower(option),string_lower(backseat_message)) && backseat_message != ""){
+				continue;
+			}
+			match = [i,option,_option];
+			matches++;
 		
-		draw_text(5,y_offset,string(i+1)+". "+option);
-		y_offset += 35;
+			draw_text(5,y_offset,string(i+1)+". "+option);
+			y_offset += 35;
+		}
+	
+		y_offset += 20;
+	
+		surface_reset_target();
+		surface_set_target(application_surface);
+	
+		if (matches > 0) draw_sprite_ext(spr_dark_nineslice,0,20,base_offset-y_offset,4,(y_offset+10)/150,0,c_white,1);
+		draw_sprite_ext(spr_undark_nineslice,0,20,base_offset,4,0.5,0,c_white,1);
+		if (matches > 0) draw_surface(option_surface,40,base_offset-y_offset+20);
 	}
-	y_offset += 20;
-	
-	surface_reset_target();
-	surface_set_target(application_surface);
-	
-	if (matches > 0) draw_sprite_ext(spr_dark_nineslice,0,20,base_offset-y_offset,4,(y_offset+10)/150,0,c_white,1);
-	draw_sprite_ext(spr_undark_nineslice,0,20,base_offset,4,0.5,0,c_white,1);
-	if (matches > 0) draw_surface(option_surface,40,base_offset-y_offset+20);
 	
 	var message_surf = surface_create(600,40);
 	
@@ -149,6 +152,7 @@ if target_stream == global.stream_hovering || (target_stream == global.streamer_
 		keyboard_string = "";
 		if (is_correct){
 			global.last_guess = 1;
+			scr_give_gold(100);
 			scr_streamer_change_state(1,target_stream);
 			scr_chat_change_state(1,target_stream);
 			switch_to_state_name(states[current_state].correct_state);

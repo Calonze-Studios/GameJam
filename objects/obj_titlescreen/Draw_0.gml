@@ -17,11 +17,10 @@ draw_rectangle(x1, 0, 1600, 900, 0);
 draw_self();
 
 
-var options = ["STORY MODE", "ARCADE MODE", "SETTINGS", "CREDITS"];
+var options = ["STORY MODE", "ARCADE MODE", "SETTINGS"];
 var descriptions = ["Not available in gamejam demo!",
 					"Aim for a HIGH SCORE!" + (global.highscore == 0 ? "" : ("\nHigh score: " + string(global.highscore))),
-					"Change your SETTINGS!",
-					"rogues gallery"];
+					"Change your SETTINGS!"]
 					
 draw_set_halign(fa_right)
 draw_set_valign(fa_top)

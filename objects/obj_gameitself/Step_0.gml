@@ -28,11 +28,21 @@ if !global.game_paused || gameinprogress {
 		wait_timer += 1 / (global.in_shop+1) * (global.rush_hour+1)
 }
 
-global.hour = floor(global.timer / 2400)%23;
-if global.hour%6 == 0 {
+var prevhour = global.hour
+
+if global.timer == 600 || global.timer == 1200 || global.timer == 1800
+	scr_add_random_streamer();
+
+global.hour = floor(global.timer / 2400)%24;
+if global.hour % 6 == 0 {
 	global.rush_hour = 0;
 } else {
 	global.rush_hour = 1;
+}
+
+if prevhour != global.hour {
+	scr_add_item_to_shop(1, 2);
+	scr_add_item_to_shop(2, 3);
 }
 
 //global.rush_hour = 1;
@@ -47,7 +57,7 @@ if (global.rush_hour) {
 	}
 }
 
-if (gametimer > 1*fps){
+if (gametimer > gametimer_target){
 	var _gameid = irandom_range(0,global.streamers_unlocked-1);
 	if (!gameinprogress) {
 		with (global.streamer_game[_gameid]) {
