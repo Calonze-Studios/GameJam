@@ -1,4 +1,4 @@
-target_stream = 0;
+target_stream = global.streamers_unlocked-1;
 current_state = 0;
 previous_state = 0;
 my_surface = surface_create(640,480);

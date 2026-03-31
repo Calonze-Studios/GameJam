@@ -5,7 +5,7 @@ function scr_load_minigame(streamer){
 	current_state = 0;
 	previous_state = 0;
 	
-	streamer = 2;
+	//streamer = 3;
 	
 	switch (streamer){
 		case 1:
@@ -61,6 +61,7 @@ function scr_load_minigame(streamer){
 		
 			break;
 		case 2:
+			// blunderfail
 			var state = add_minigame_state(id,"idle")
 			state.add_layer("bg",spr_mg_blunderfail_idle,4);
 			
@@ -116,14 +117,56 @@ function scr_load_minigame(streamer){
 				state.only_once = true;
 			}
 			
-			state = add_minigame_state(id,"fight_win")
+			state = add_minigame_state(id,"fight_win");
 			state.add_layer("bg",spr_mg_blunderfail_win,0);
 			state.type = MG_STATE_RESULT;
 			
-			state = add_minigame_state(id,"fight_lose")
+			state = add_minigame_state(id,"fight_lose");
 			state.add_layer("bg",spr_mg_blunderfail_lose,4);
 			state.type = MG_STATE_RESULT;
 			
+			break;
+		case 3:
+			var state = add_minigame_state(id,"idle");
+			state.add_layer("bg",spr_mg_burgers_idle,2);
+			
+			for (var i=2;i<5;i++){
+				for (var j=1;j<=i;j++) {
+					state = add_minigame_state(id,string(i)+"_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_"+string(i)+"b"+string(j)),2);
+					state.correct_state = string(i)+"w_"+string(j);
+					state.wrong_state = string(i)+"l_"+string(j);
+					state.difficulty = i-2;
+					switch (state.difficulty) {
+						case MG_DIFFICULTY_EASY:
+							state.add_option("sauce1",j==2);
+							state.add_option("sauce2",j==1);
+							break;
+						case MG_DIFFICULTY_MEDIUM:
+							state.add_option("sauce1",j==3);
+							state.add_option("sauce2",j==2);
+							state.add_option("sauce3",j==1);
+							break;
+						case MG_DIFFICULTY_HARD:
+							state.add_option("sauce1",j==4);
+							state.add_option("sauce2",j==3);
+							state.add_option("sauce3",j==2);
+							state.add_option("sauce4",j==1);
+							break;
+					}
+					state.type = MG_STATE_QTEVENT;
+					
+					state = add_minigame_state(id,string(i)+"w_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_win_"+string(i)+"b"+string(j)),2);
+					state.difficulty = i-2;
+					state.type = MG_STATE_RESULT;
+					
+					state = add_minigame_state(id,string(i)+"l_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_lose_"+string(i)+"b"+string(j)),2);
+					state.difficulty = i-2;
+					state.type = MG_STATE_RESULT;
+				}
+			}
 			break;
 		default:
 			// pkmn

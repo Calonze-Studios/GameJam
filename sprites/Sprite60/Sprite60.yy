@@ -68,7 +68,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "qte",
-    "path": "folders/Sprites/minigames/vrchat/qte.yy",
+    "name": "burgers",
+    "path": "folders/Sprites/minigames/burgers.yy",
   },
 }
