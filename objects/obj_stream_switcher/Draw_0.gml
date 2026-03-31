@@ -54,8 +54,17 @@ if !surface_exists(global.computersurf)
 	global.computersurf = surface_create(918, 557);
 		
 surface_set_target(global.computersurf);
-//surface_set_target(application_surface);
+
+//draw_sprite_ext(spr_settings_browser_nineslice, 0, 0, 0, (918)/sprite_get_width(spr_settings_browser_nineslice), (557-15)/sprite_get_height(spr_settings_browser_nineslice), 0, c_white, 1);
 draw_clear(c_black);
+draw_set_color(#0020ff)
+draw_rectangle(0, 542, 918, 557, 0);
+draw_set_halign(fa_right);
+draw_set_valign(fa_bottom);
+draw_set_color(c_white);
+draw_text(918-2, 557, string(global.hour) + ":00")
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 
 for (var a = 0; a < global.streamers_unlocked; a++) {
 	if screen_on >= max_per_row {
@@ -106,6 +115,7 @@ if global.game_state == 1 {
 	draw_set_alpha(1)
 	if !surface_exists(global.streamsurf[global.streamer_on])
 		global.streamsurf[global.streamer_on] = surface_create(912, 513)
+	draw_sprite_ext(spr_settings_browser_nineslice, 0, stream_x-4, stream_y-23, 917/sprite_get_width(spr_settings_browser_nineslice), 537/sprite_get_height(spr_settings_browser_nineslice), 0, c_white, 1)
 	draw_surface(global.streamsurf[global.streamer_on], stream_x, stream_y);
 }
 

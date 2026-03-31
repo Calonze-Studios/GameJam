@@ -15,22 +15,8 @@ function scr_chat_get_random_message_by_state(state = global.chat_state[global.s
 				"hey my stream is kinda lagging is it just me"
 			];
 		break;
+		
 		case 1:
-			random_messages = [
-				"god DAMN you're stupid",
-				"rigged!!",
-				"i believed in you...",
-				"what?? it was so obvious????",
-				"this streamer stupid af",
-				"go play another game dude.",
-				"Are you 5 years old?",
-				"oh my LORD...",
-				"people still watch this guy?",
-				"good guess sherlock",
-				"don't worry... i still love you..."
-			];
-		break;
-		case 2:
 			random_messages = [
 				"you did it?? well whaddya know...",
 				"rigged!!",
@@ -42,9 +28,93 @@ function scr_chat_get_random_message_by_state(state = global.chat_state[global.s
 				"congrats!!",
 				"people still watch this guy?",
 				"good guess watson",
-				"I LOVE YOU!! I LOVE YOU!!!!"
+				"I LOVE YOU!! I LOVE YOU!!!!",
+				"bro might be einstein",
+				"LET'S GOOO",
+				"please have my children",
+				"clip that",
+				"bro used his strategy",
+				"rigged",
+				"huge W",
+				"W W W sahur",
+				"we got a #1 victory royale",
+				"you can NOT be human",
+				"insane clutch",
+				"somehow did a better job than the devs",
+				"they should elect you as the president",
+				"win so good i started smoking again",
+				"i skipped a funeral to watch this W",
+				"GLORY TO BRAZIL",
+				"never doubting you again",
+				"i'm making a note here, huge success",
+				"how did that work",
+				"honestly, power to your kind",
+				"no wonder you do this for a living",
+				"this stream will be generational",
+				"i will sacrifice my firstborn for you",
+				"absolute cinema",
+				"peak",
+				"the shakespeare of our generation",
+				"this game needs a hard mode",
+				"when are they adding you into the game",
+				"kindest streamer",
+				"the winner takes it all",
+				"just won the jurkport, ten million dollar",
+				"hell yeah",
+				"i used to pray for times like this",
+				"GOAT",
+				"unc still got it"
 			];
 		break;
+		
+		case 2:
+			random_messages = [
+				"god DAMN you're stupid",
+				"rigged!!",
+				"i believed in you...",
+				"what?? it was so obvious????",
+				"this streamer stupid af",
+				"go play another game dude.",
+				"Are you 5 years old?",
+				"oh my LORD...",
+				"people still watch this guy?",
+				"good guess sherlock",
+				"don't worry... i still love you...",
+				"kekw",
+				"ain't no way",
+				"lmao",
+				"bro used his strategy",
+				"rigged",
+				"never cook again",
+				"clip that",
+				"unfollowed + you suck + end the stream + i'm better + seethe + ratio",
+				"well that was that",
+				"i just got the divorce papers",
+				"4210 Panamint St, Los Angeles, CA 90065, United States",
+				"the press will know...",
+				"end the stream atp",
+				"never let bro think again",
+				"shouldn't've trusted chat",
+				"i wouldn't do that",
+				"you failed.",
+				"raid someone first",
+				"despite everything, you still suck",
+				"massive L",
+				"noob",
+				"WHAT is that aim",
+				"how do i refund my sub",
+				"can't believe i got this loser tattooed",
+				"beta behavior",
+				"we need to make tutorials longer",
+				"bro could lose a winning ticket",
+				"you're so bad at 2D platformers",
+				"shave your head",
+				"i heard the burgeria's hiring",
+				"return to the desk job, mate",
+				"i remember you're failures"
+			];
+		break;
+		
 			
 		case 3:
 			random_messages = [
@@ -58,7 +128,48 @@ function scr_chat_get_random_message_by_state(state = global.chat_state[global.s
 				"i love Flinch(tm)! i love Flinch(tm)!",
 				"people still watch this guy?",
 				"you can do it sherlock",
-				"i love you!! you can do it!!! with the power of love!!!!!"
+				"i love you!! you can do it!!! with the power of love!!!!!",
+				"cut the red wire",
+				"can we restart?",
+				"what is einstein doing",
+				"end the stream atp",
+				"bro uses his strategy",
+				"i think therefore i am",
+				"i played these games before",
+				"press alt and f4",
+				"there's no saving this",
+				"just pick something already",
+				"if you don't clutch this i'll unfollow",
+				"thinking with portals",
+				"42",
+				"we got thinking livestream before the heat death of the universe",
+				"me thinking really hard",
+				"rush B",
+				"trust the process",
+				"you need to listen to me here",
+				"at the crossroads don't turn left",
+				"this is what they don't teach you at thinking school",
+				"this 97 year old streamer still thinks of solutions the old-fashioned way",
+				"just ask grake",
+				"you should know this...",
+				"this is just like the dream i had",
+				"let me think",
+				"you gotta think outside the box, streamer",
+				"never let bro think again",
+				"what's your favourite idea",
+				"let's stop and think about this",
+				"too hard please switch",
+				"why are you like this",
+				"skip this one",
+				"i know what to do and i wont tell you",
+				"bro thinks he the thinker",
+				"dude your over complicating it",
+				"can you just choose something random",
+				"you're taking too long",
+				"honk shoo honk shoo",
+				"hmm what an interesting situation",
+				"nerd",
+				"pausechamp" 
 			];
 		break;
 	}

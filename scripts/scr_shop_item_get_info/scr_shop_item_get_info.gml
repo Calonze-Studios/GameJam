@@ -10,7 +10,7 @@ function scr_shop_item_get_info(_id){
 			description = "Brand new, used, clean, kinda dirty, ultra-special wide-screen monitor!"
 			cost = 250;
 			count = 1;
-			image = spr_no_item;
+			
 		break;
 		
 		case 1:
@@ -18,7 +18,7 @@ function scr_shop_item_get_info(_id){
 			description = "Gift your favorite Flinch streamer a Flinch Sub(tm)! It'll shield you from 1 ban!"
 			cost = 1000;
 			count = global.lives - 3;
-			image = spr_no_item;
+			image = spr_flinch_sub;
 		break;
 		
 		case 2:
@@ -26,7 +26,7 @@ function scr_shop_item_get_info(_id){
 			description = "Make yourself LAG! Give yourself more time whilst BACKSEATING!"
 			cost = 500;
 			count = 5;
-			image = spr_no_item;
+			image = spr_lag_switch;
 		break;
 	}
 }

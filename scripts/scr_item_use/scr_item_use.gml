@@ -10,7 +10,9 @@ function scr_item_use(item_id){
 			break;
 			
 			case 2:
-				global.qtetime += 150;
+				for (var i = 0; i < array_length(global.game); i++) {
+					with (global.game[i]) alarm[0] += irandom_range(1,3)*fps
+				};
 			break;
 		}
 		

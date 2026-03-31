@@ -4,12 +4,18 @@ if option_sel != -1 {
 	
 	if option_sel == 1 && dark_rec_alpha >= 1 && !alarm_triggered {
 		alarm_triggered = 1;
+		
 		alarm[0] = 5;
+		scr_add_random_streamer();
+
+		scr_add_item_to_shop(1, 2);
+		scr_add_item_to_shop(2, 3);
+	
 	}
 	
 	if option_sel == 2 && !settinged {
 		settinged = 1;
-		instance_create_depth(0, 0, -999, obj_settings)
+		instance_create_depth(0, 0, -999, obj_settings);
 	}
 	if settinged && !instance_exists(obj_settings) {
 		option_sel = -1
