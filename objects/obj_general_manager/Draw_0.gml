@@ -22,11 +22,14 @@ if bulge == 1 {
 }
 
 
-draw_set_halign(fa_right);
+//draw_set_halign(fa_right);
 /*
 draw_set_valign(fa_top);
 
 draw_text(1600, 88, "FPS: " + string(fps));
 */	
-draw_set_valign(fa_bottom)
-draw_text_transformed(1600, 900, "LIVES - " + string(global.lives), 3, 3, 0);
+//draw_set_valign(fa_bottom)
+for (var i=0;i<3;i++) {
+	var full = global.lives >= i+1;
+	draw_sprite((full ? spr_heart_full : spr_heart_empty),0,1330+90*i, 810);
+}

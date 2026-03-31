@@ -1,14 +1,26 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_load_minigame(streamer){
+global.games = ["vrchat","blunderfail","burgers","pkmn"]
+global.takengames = ds_map_create()
+function scr_choose_random_minigame(){
+	var pool = [];
+	for (var i=0;i<array_length(global.games);i++){
+		if (!ds_map_exists(global.takengames,global.games[i])) array_push(pool,global.games[i]);
+	}
+	if (array_length(pool) == 0) return "pkmn";
+	var game = pool[irandom_range(0,array_length(pool)-1)];
+	global.takengames[?game] = true;
+	return game;
+}
+function scr_load_minigame(gameid){
 	states = [];
 	current_state = 0;
 	previous_state = 0;
 	
 	//streamer = 3;
 	
-	switch (streamer){
-		case 1:
+	switch (gameid){
+		case "vrchat":
 			// vrchat
 			var state = add_minigame_state(id,"idle");
 			state.add_layer("bg",spr_mg_vrchat_idle_bg,0);
@@ -60,7 +72,7 @@ function scr_load_minigame(streamer){
 			state.type = MG_STATE_RESULT;
 		
 			break;
-		case 2:
+		case "blunderfail":
 			// blunderfail
 			var state = add_minigame_state(id,"idle")
 			state.add_layer("bg",spr_mg_blunderfail_idle,4);
@@ -126,7 +138,7 @@ function scr_load_minigame(streamer){
 			state.type = MG_STATE_RESULT;
 			
 			break;
-		case 3:
+		case "burgers":
 			var state = add_minigame_state(id,"idle");
 			state.add_layer("bg",spr_mg_burgers_idle,2);
 			

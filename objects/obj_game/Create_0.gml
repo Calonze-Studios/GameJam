@@ -17,7 +17,7 @@ is_backseating = false;
 backseat_ui_offset = -400;
 backseat_ui_offset_t = -400;
 
-scr_load_minigame(target_stream);
+scr_load_minigame(scr_choose_random_minigame());
 
 function switch_to_state_idx(idx){
 	difficulty = irandom_range(MG_DIFFICULTY_EASY,MG_DIFFICULTY_HARD);
