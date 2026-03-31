@@ -1,5 +1,5 @@
 if (target_stream == 0) exit; // oh thats why it broke oops
-if target_stream == global.stream_hovering || target_stream == global.streamer_on {
+if target_stream == global.stream_hovering || (target_stream == global.streamer_on && global.game_state == 1) {
 	if (!surface_exists(states[current_state].render_surface)) {
 		states[current_state].render_surface = surface_create(640,480);
 	}
@@ -149,9 +149,11 @@ if target_stream == global.stream_hovering || target_stream == global.streamer_o
 		backseat_message = "";
 		keyboard_string = "";
 		if (is_correct){
+			global.last_guess = 1;
 			switch_to_state_name(states[current_state].correct_state);
 		} else {
-			global.lives--
+			global.last_guess = 0;
+			scr_remove_life();
 			switch_to_state_name(states[current_state].wrong_state);
 		}
 	}

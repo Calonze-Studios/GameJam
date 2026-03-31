@@ -25,8 +25,10 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 			var chat_parts = string_split(global.chat_messages[a][i],": ");
 			var x_offset = 3;
 			
-			for (var j = 0; j < 2;j++){
-				var text_lines = string_split(chat_parts[j],"\n");
+			for (var j = 0; j < array_length(chat_parts);j++){
+				var text_lines = [chat_parts[j]]
+				if string_replace(chat_parts[j], "\n", "") != chat_parts[j]
+					text_lines = string_split(chat_parts[j],"\n");
 				var local_y_offset = 0;
 				
 				for (var k = 0; k<array_length(text_lines);k++) {

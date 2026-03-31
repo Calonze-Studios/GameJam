@@ -10,7 +10,7 @@ function scr_item_use(item_id){
 			break;
 			
 			case 2:
-			
+				global.qtetime += 150;
 			break;
 		}
 		

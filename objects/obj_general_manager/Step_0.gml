@@ -23,3 +23,7 @@ if scr_keybind_pressed(ord("Q"))
 	global.gold += 100
 if scr_keybind_pressed(ord("W"))
 	global.gold -= 100
+if scr_keybind_pressed(ord("Z"))
+	global.lives--;
+if scr_keybind_pressed(ord("X"))
+	global.lives++;

@@ -1,3 +1,54 @@
+if description_target != -1 && description_state == -1 {
+	description_state = 0;
+	description_y = irandom_range(18, 900-description_maxheight);
+	description_x = irandom_range(0, 1600-description_width);
+}
+
+if description_state == 0 {
+	description_height = lerp(description_height, description_maxheight, 0.25);
+}
+if description_state == 1 {
+	description_height = description_maxheight;
+}
+if description_state == 2 {
+	description_height = lerp(description_height, 20, 0.25);
+}
+
+if description_height + 5 >= description_maxheight && description_state == 0 {
+	description_state = 1;
+}
+if description_height - 21 <= 0 {
+	description_target = -1;
+	description_state = -1;
+}
+
+if ((mouse_x >= description_x && mouse_x < description_x + description_width - 30 && mouse_y >= description_y && mouse_y <= description_y + 19) || description_mouse_grabbed) && mouse_check_button(mb_left) && !options_mouse_grabbed {
+	
+	if description_mouse_grabbed == 0 {
+		
+		description_mouse_grabbed = 1;
+		description_mouse_x_last = mouse_x;
+		description_mouse_y_last = mouse_y;
+		
+	}
+	
+	description_x -= description_mouse_x_last - mouse_x;
+	description_y -= description_mouse_y_last - mouse_y;
+	
+	description_mouse_x_last = mouse_x;
+	description_mouse_y_last = mouse_y;
+	
+} else {
+	
+	description_mouse_grabbed = 0;
+	description_mouse_x_last = 0;
+	description_mouse_y_last = 0;
+	
+}
+
+description_x = clamp(description_x, 0, 1600 - description_width);
+description_y = clamp(description_y, 18, 900 - description_maxheight);
+
 if state == 0 {
 	options_height = lerp(options_height, options_maxheight, 0.25)
 	loading_frame += 0.2;
@@ -6,6 +57,8 @@ if state == 1 {
 	options_height = options_maxheight;
 } 
 if state == 2 {
+	if description_state != -1
+		description_state = 2;
 	options_height = lerp(options_height, 20, 0.25)
 }
 
@@ -17,7 +70,7 @@ if options_height - 21 <= 0 {
 	instance_destroy();
 }
 	
-if ((mouse_x >= x && mouse_x < x + options_width - 30 && mouse_y >= y && mouse_y <= y + 19) || options_mouse_grabbed) && mouse_check_button(mb_left) {
+if ((mouse_x >= x && mouse_x < x + options_width - 30 && mouse_y >= y && mouse_y <= y + 19) || options_mouse_grabbed) && mouse_check_button(mb_left) && !description_mouse_grabbed {
 	
 	if options_mouse_grabbed == 0 {
 		
@@ -41,12 +94,16 @@ if ((mouse_x >= x && mouse_x < x + options_width - 30 && mouse_y >= y && mouse_y
 	
 }
 
-maxdepth = script_execute_ext(max, description_depth);
-maxdepth = max(maxdepth, settings_depth);
-
+if mouse_x >= x && mouse_x < x + options_width && mouse_y >= y && mouse_y <= y + options_height && mouse_check_button(mb_left) {
+	settings_depth = description_depth-1
+}
 x = clamp(x, 0, 1600 - options_width);
 y = clamp(y, 18, 900 - options_maxheight);
 
 if !surface_exists(option_surface)
 	option_surface = surface_create(477, clamp(options_height - 23, 1, options_maxheight))
 surface_resize(option_surface, 477, clamp(options_height - 23, 1, options_maxheight))
+
+if !surface_exists(description_surface)
+	description_surface = surface_create(477, clamp(description_height - 23, 1, description_maxheight))
+surface_resize(description_surface, 477, clamp(description_height - 23, 1, description_maxheight))

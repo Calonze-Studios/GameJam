@@ -25,7 +25,7 @@ if clickprogress > 0 {
 	
 	draw_set_valign(fa_center);
 	
-	if !quit && !settinged && !REALLYquit {
+	if !quit && !REALLYquit {
 		for (var i = 0; i <= 3; i++) {
 		
 			_xscale[i] = 3;
@@ -35,7 +35,7 @@ if clickprogress > 0 {
 			
 			var spr = spr_dark_nineslice;
 		
-			if mouse_x >= 800 - (string_width(options[i])*3/2) && mouse_x <= 800 + (string_width(options[i])*3/2) && mouse_y >= optionsyoffset + _y - (string_height(options[i])*3/2) && mouse_y <= optionsyoffset + _y + (string_height(options[i])*3/2)
+			if mouse_x >= 800 - (string_width(options[i])*3/2) && mouse_x <= 800 + (string_width(options[i])*3/2) && mouse_y >= optionsyoffset + _y - (string_height(options[i])*3/2) && mouse_y <= optionsyoffset + _y + (string_height(options[i])*3/2) && !settinged
 				selected = i;
 			
 			if selected == i
@@ -61,7 +61,11 @@ if clickprogress > 0 {
 				if i == 0 {
 					resumed = 1;
 				}
-			
+				
+				if i == 1 {
+					settinged = 1;
+				}
+				
 				if i == 2 {
 					quit = 1;
 				}

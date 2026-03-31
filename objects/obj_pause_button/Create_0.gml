@@ -15,6 +15,7 @@ quit = 0;
 REALLYquit = 0;
 
 settinged = 0;
+TRULYsettinged = 0;
 
 optionsyoffset = 0;
 

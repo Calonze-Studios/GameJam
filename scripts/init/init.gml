@@ -28,6 +28,18 @@ global.computersurf_ydraw = 117;
 
 global.night_on = 0; // Which night you're currently on
 
+global.last_guess = -1;
+
+global.hour = 0;
+global.rush_hour = 0;
+global.timer = 0;
+	
+randomize();
+global.qtetime = irandom_range(5, 10);
+global.qtetime *= 30;
+
+global.qteinprogress = 0;
+
 global.game_state = 0; // 0 - not watching stream
 					   // 1 - watching stream
 
@@ -39,14 +51,21 @@ global.settings_options = [];
 global.settings_section = [];
 global.settings_key = [];
 
+scr_setting_add("musvolume", "Volume", "Music volume", "The volume of the music! Yea h!!", "real", 100);
+scr_setting_add("sfxvolume", "Volume", "Sound effect volume", "The sound effect volume!", "real", 100);
+
 scr_setting_add("fullscreen", "Display", "Full screen", "Enable or disable FULL SCREEN! Full screen is recommended for the game to look better, but not necessary.", "bool", 1)
 scr_setting_add("size", "Display", "Game Size", "Change your screen size! 1600x900 recommended, but could cause scaling issues on smaller monitors.", "string", "1600x900", ["1600x900", "800x450"])
+
+global.sfxvolume = 1;
+global.musvolume = 1;
 
 global.screen_height = 1600;
 global.screen_width = 900;
 
 global.score = 0;
-global.highscore = 0;
+scr_edit_highscore(0);
+global.highscore = scr_get_highscore();
 
 global.stream_hovering = -1;
 

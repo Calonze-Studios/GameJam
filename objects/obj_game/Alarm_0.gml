@@ -6,7 +6,7 @@ switch (states[current_state].type){
 		break;
 	case MG_STATE_QTEVENT:
 		show_debug_message("failed to backseat");
-		global.lives--
+		scr_remove_life();
 		switch_to_state_name(states[current_state].wrong_state);
 		break;
 	case MG_STATE_RESULT:

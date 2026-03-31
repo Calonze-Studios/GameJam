@@ -47,7 +47,7 @@ function switch_to_state_idx(idx){
 	previous_state = current_state;
 	current_state = idx;
 	states[current_state].visited = true;
-	alarm[0] = states[current_state].expiry_timer;
+	//alarm[0] = states[current_state].expiry_timer;
 	if (states[current_state].type == MG_STATE_QTEVENT) {
 		is_backseating = true;
 		global.typing_mode = true;
@@ -95,7 +95,7 @@ function switch_to_random_state(type=-1) {
 	if (type >= 0) {
 		var _states = get_states_of_type(type);
 		if (array_length(_states) == 0) {
-			alarm[0] = 15;
+			//alarm[0] = 15;
 			flush_only_once();
 			return;
 		}
@@ -103,7 +103,7 @@ function switch_to_random_state(type=-1) {
 	} else {
 		var _states = get_states();
 		if (array_length(_states) == 0) {
-			alarm[0] = 15;
+			//alarm[0] = 15;
 			flush_only_once();
 			return;
 		}
