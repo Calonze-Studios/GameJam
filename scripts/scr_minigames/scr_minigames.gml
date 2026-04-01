@@ -1,12 +1,187 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_load_minigame(streamer){
+global.games = ["vrchat","blunderfail","burgers","pkmn"]
+global.takengames = ds_map_create()
+function scr_choose_random_minigame(){
+	var pool = [];
+	for (var i=0;i<array_length(global.games);i++){
+		if (!ds_map_exists(global.takengames,global.games[i])) array_push(pool,global.games[i]);
+	}
+	if (array_length(pool) == 0) return "pkmn";
+	var game = pool[irandom_range(0,array_length(pool)-1)];
+	global.takengames[?game] = true;
+	return game;
+}
+function scr_load_minigame(gameid){
 	states = [];
 	current_state = 0;
 	previous_state = 0;
 	
-	switch (streamer){
+	//streamer = 3;
+	
+	switch (gameid){
+		case "vrchat":
+			// vrchat
+			var state = add_minigame_state(id,"idle");
+			state.add_layer("bg",spr_mg_vrchat_idle_bg,0);
+			state.add_layer("fg",spr_mg_vrchat_idle_fg,5);
+			
+			state = add_minigame_state(id,"friend_idle");
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("fg",spr_mg_vrchat_friend_neutral,0);
+			state.add_layer("ui",spr_mg_vrchat_friend_ui,0);
+			state.add_option("Add friend!",true);
+			state.add_option("Block",false);
+			state.wrong_state = "friend_fail";
+			state.correct_state = "friend_success";
+			state.type = MG_STATE_QTEVENT;
+			
+			state = add_minigame_state(id,"friend_fail")
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("bg",spr_mg_vrchat_friend_fail,0);
+			state.add_layer("ui",spr_mg_vrchat_friend_ui,0);
+			state.type = MG_STATE_RESULT;
+			
+			state = add_minigame_state(id,"friend_success")
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("bg",spr_mg_vrchat_friend_win,0);
+			state.add_layer("bg",spr_mg_vrchat_friend_winfx,5);
+			state.add_layer("ui",spr_mg_vrchat_friend_ui,0);
+			state.type = MG_STATE_RESULT;
+			
+			state = add_minigame_state(id,"ragebaiter_idle");
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("fg",spr_mg_vrchat_ragebait_neutral,5);
+			state.add_layer("ui",spr_mg_vrchat_ragebait_ui,0);
+			state.add_option("Add friend!",false);
+			state.add_option("Block",true);
+			state.wrong_state = "ragebaiter_fail";
+			state.correct_state = "ragebaiter_success";
+			state.type = MG_STATE_QTEVENT;
+			
+			state = add_minigame_state(id,"ragebaiter_fail")
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("bg",spr_mg_vrchat_ragebait_fail,0);
+			state.add_layer("ui",spr_mg_vrchat_ragebait_ui,0);
+			state.type = MG_STATE_RESULT;
+			
+			state = add_minigame_state(id,"ragebaiter_success")
+			state.add_layer("bg",spr_mg_vrchat_qte_bg,0);
+			state.add_layer("bg",spr_mg_vrchat_ragebait_win,0);
+			state.add_layer("ui",spr_mg_vrchat_ragebait_blocked,0);
+			state.type = MG_STATE_RESULT;
+		
+			break;
+		case "blunderfail":
+			// blunderfail
+			var state = add_minigame_state(id,"idle")
+			state.add_layer("bg",spr_mg_blunderfail_idle,4);
+			
+			var enemy = function (_diff,_correct_opt) constructor {
+				diff = _diff;
+				correct_option = _correct_opt;
+			}
+			var enemies = [
+				new enemy(MG_DIFFICULTY_EASY,"Sprint"),
+				new enemy(MG_DIFFICULTY_HARD,"Strike"),
+				new enemy(MG_DIFFICULTY_MEDIUM,"Strike"),
+				new enemy(MG_DIFFICULTY_EASY,"Sprint"),
+				new enemy(MG_DIFFICULTY_EASY,"Strike"),
+				new enemy(MG_DIFFICULTY_MEDIUM,"Save"),
+				new enemy(MG_DIFFICULTY_HARD,"Sack"),
+				new enemy(MG_DIFFICULTY_MEDIUM,"Save"),
+				new enemy(MG_DIFFICULTY_HARD,"Sprint"),
+				new enemy(MG_DIFFICULTY_HARD,"Sack")
+			]
+			
+			for (var i=0;i<array_length(enemies);i++){
+				var _enemy = enemies[i];
+				state = add_minigame_state(id,"enemy"+string(i));
+				state.add_layer("bg",spr_mg_blunderfail_qtbg,0);
+				
+				var enemylayer = state.add_layer("enemy",spr_mg_blunderfail_enemybatch,0);
+				enemylayer.current_frame = i;
+				
+				switch (_enemy.diff) {
+					case MG_DIFFICULTY_EASY:
+						state.add_layer("ui",spr_mg_blunderfail_ui_easy,0);
+						state.add_option("Sprint","Sprint"==_enemy.correct_option);
+						state.add_option("Strike","Strike"==_enemy.correct_option);
+						break;
+					case MG_DIFFICULTY_MEDIUM:
+						state.add_layer("ui",spr_mg_blunderfail_ui_medium,0);
+						state.add_option("Save","Save"==_enemy.correct_option);
+						state.add_option("Sprint","Sprint"==_enemy.correct_option);
+						state.add_option("Strike","Strike"==_enemy.correct_option);
+						break;
+					case MG_DIFFICULTY_HARD:
+						state.add_layer("ui",spr_mg_blunderfail_ui_hard,0);
+						state.add_option("Save","Save"==_enemy.correct_option);
+						state.add_option("Sprint","Sprint"==_enemy.correct_option);
+						state.add_option("Sack","Sack"==_enemy.correct_option);
+						state.add_option("Strike","Strike"==_enemy.correct_option);
+						break;
+				}
+				
+				state.correct_state = "fight_win";
+				state.wrong_state = "fight_lose";
+				state.type = MG_STATE_QTEVENT;
+				state.only_once = true;
+			}
+			
+			state = add_minigame_state(id,"fight_win");
+			state.add_layer("bg",spr_mg_blunderfail_win,0);
+			state.type = MG_STATE_RESULT;
+			
+			state = add_minigame_state(id,"fight_lose");
+			state.add_layer("bg",spr_mg_blunderfail_lose,4);
+			state.type = MG_STATE_RESULT;
+			
+			break;
+		case "burgers":
+			var state = add_minigame_state(id,"idle");
+			state.add_layer("bg",spr_mg_burgers_idle,2);
+			
+			for (var i=2;i<5;i++){
+				for (var j=1;j<=i;j++) {
+					state = add_minigame_state(id,string(i)+"_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_"+string(i)+"b"+string(j)),2);
+					state.correct_state = string(i)+"w_"+string(j);
+					state.wrong_state = string(i)+"l_"+string(j);
+					state.difficulty = i-2;
+					switch (state.difficulty) {
+						case MG_DIFFICULTY_EASY:
+							state.add_option("sauce1",j==2);
+							state.add_option("sauce2",j==1);
+							break;
+						case MG_DIFFICULTY_MEDIUM:
+							state.add_option("sauce1",j==3);
+							state.add_option("sauce2",j==2);
+							state.add_option("sauce3",j==1);
+							break;
+						case MG_DIFFICULTY_HARD:
+							state.add_option("sauce1",j==4);
+							state.add_option("sauce2",j==3);
+							state.add_option("sauce3",j==2);
+							state.add_option("sauce4",j==1);
+							break;
+					}
+					state.type = MG_STATE_QTEVENT;
+					
+					state = add_minigame_state(id,string(i)+"w_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_win_"+string(i)+"b"+string(j)),2);
+					state.difficulty = i-2;
+					state.type = MG_STATE_RESULT;
+					
+					state = add_minigame_state(id,string(i)+"l_"+string(j))
+					state.add_layer("bg",asset_get_index("spr_mg_burgers_lose_"+string(i)+"b"+string(j)),2);
+					state.difficulty = i-2;
+					state.type = MG_STATE_RESULT;
+				}
+			}
+			break;
 		default:
+			// pkmn
 			var state = add_minigame_state(id,"idle")
 			state.add_layer("bg",spr_mg_pkmn_idle_bg,30);
 			state.add_layer("fg",spr_mg_pkmn_idle_fg,30);
