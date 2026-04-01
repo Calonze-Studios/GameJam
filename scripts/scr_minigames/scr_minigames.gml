@@ -151,19 +151,19 @@ function scr_load_minigame(gameid){
 					state.difficulty = i-2;
 					switch (state.difficulty) {
 						case MG_DIFFICULTY_EASY:
-							state.add_option("sauce1",j==2);
-							state.add_option("sauce2",j==1);
+							state.add_option("Sauce 1",j==2);
+							state.add_option("Sauce 2",j==1);
 							break;
 						case MG_DIFFICULTY_MEDIUM:
-							state.add_option("sauce1",j==3);
-							state.add_option("sauce2",j==2);
-							state.add_option("sauce3",j==1);
+							state.add_option("Sauce 1",j==3);
+							state.add_option("Sauce 2",j==2);
+							state.add_option("Sauce 3",j==1);
 							break;
 						case MG_DIFFICULTY_HARD:
-							state.add_option("sauce1",j==4);
-							state.add_option("sauce2",j==3);
-							state.add_option("sauce3",j==2);
-							state.add_option("sauce4",j==1);
+							state.add_option("Sauce 1",j==4);
+							state.add_option("Sauce 2",j==3);
+							state.add_option("Sauce 3",j==2);
+							state.add_option("Sauce 4",j==1);
 							break;
 					}
 					state.type = MG_STATE_QTEVENT;
@@ -189,8 +189,8 @@ function scr_load_minigame(gameid){
 			state.set_timer_seconds(5);
 
 			state = add_minigame_state(id,"battle_fire_idle")
-			state.add_option("Attack the Fire!",true);
-			state.add_option("Jus sit there doing nothing like a dumbass",false);
+			state.add_option("use FIREPUNCH",true);
+			state.add_option("defend yourself",false);
 			state.correct_state = "battle_fire_win";
 			state.wrong_state = "battle_fire_lose";
 			state.add_layer("bg",spr_mg_pkmn_battle_bg,2);
