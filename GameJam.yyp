@@ -50,6 +50,7 @@
     {"id":{"name":"spr_placeholder_loading","path":"sprites/spr_placeholder_loading/spr_placeholder_loading.yy",},"order":1,},
     {"id":{"name":"scr_banter_over","path":"scripts/scr_banter_over/scr_banter_over.yy",},"order":5,},
     {"id":{"name":"spr_mg_burgers_lose_3b1","path":"sprites/spr_mg_burgers_lose_3b1/spr_mg_burgers_lose_3b1.yy",},"order":2,},
+    {"id":{"name":"scr_banter_SEX","path":"scripts/scr_banter_SEX/scr_banter_SEX.yy",},"order":10,},
     {"id":{"name":"scr_banter","path":"scripts/scr_banter/scr_banter.yy",},"order":0,},
     {"id":{"name":"spr_bigphone_shine","path":"sprites/spr_bigphone_shine/spr_bigphone_shine.yy",},"order":3,},
     {"id":{"name":"font_mediumshop","path":"fonts/font_mediumshop/font_mediumshop.yy",},"order":2,},
