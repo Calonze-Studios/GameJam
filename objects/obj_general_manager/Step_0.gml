@@ -1,6 +1,8 @@
 if (array_length(global.streamer_game) == 0){
+	
 	var _game = instance_create_depth(0, 0, -1, obj_game);
 	array_push(global.streamer_game, _game);
+	
 }
 
 if glow_state == 0

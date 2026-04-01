@@ -103,9 +103,40 @@ if state != 0 {
 				depth = settings_depth;
 			}
 			
+			
 			if !_hover && mouse_check_button_pressed(mb_left) {
 				options_clicked = 0;
 			}
+			
+		}
+		
+		if global.settings_type[i] == "real" {
+			for (var e = 0; e <= 10; e++){
+				
+				var __x = 2 + string_width(global.settings_name[i])*2 + 4+ e*10;
+				var __y = yoffset + string_height(global.settings_name[i])*2
+				draw_set_color(c_grey);
+				if global.settings_value[i] >= e*10 {
+					draw_set_color(#afafaf);
+				}
+				
+				var rect_hover = 0;
+				if mouse_x >= x + 4 + __x && mouse_x <= x + 13 + __x && mouse_y <= y + 23 + __y  && mouse_y >= y + 23 + __y - ((e+1)*3) - 2
+					rect_hover = 1;
+				
+				if rect_hover
+					draw_set_color(c_white);
+				if rect_hover && mouse_check_button_pressed(mb_left) {
+					scr_setting_edit_value(global.settings_key[i], global.settings_section[i], global.settings_name[i], e*10);
+				}
+				
+				draw_rectangle(__x, __y, __x + 5, __y - ((e+1)*3), 0);
+				draw_set_color(c_black);
+				draw_rectangle(__x, __y, __x + 5, __y - ((e+1)*3), 1);
+				draw_rectangle(__x - 1, __y + 1, __x + 5 + 1, __y - ((e+1)*3) - 1, 1);
+			}
+			
+			draw_text_transformed(2 + string_width(global.settings_name[i])*2 + 4+ 100 + 10, yoffset, "(" + string(global.settings_value[i]) + ")", 2, 2, 0)
 			
 		}
 		

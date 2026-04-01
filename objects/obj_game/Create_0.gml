@@ -21,6 +21,8 @@ scr_load_minigame(scr_choose_random_minigame());
 
 function switch_to_state_idx(idx){
 	difficulty = irandom_range(MG_DIFFICULTY_EASY,MG_DIFFICULTY_HARD);
+	if (global.rush_hour)
+		difficulty = MG_DIFFICULTY_HARD;
 	keyboard_string = "";
 	backseat_message = "";
 	previous_state = current_state;
