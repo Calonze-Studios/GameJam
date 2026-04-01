@@ -109,7 +109,7 @@ if target_stream == global.stream_hovering || (target_stream == global.streamer_
 	
 	var x_offset = 0;
 	
-	//show_debug_message(matches);
+	show_debug_message(matches);
 	
 	if (string_width(backseat_message) > 600) x_offset = string_width(backseat_message)-600;
 	
@@ -129,6 +129,7 @@ if target_stream == global.stream_hovering || (target_stream == global.streamer_
 	draw_surface(message_surf,40,base_offset+25);
 	
 	surface_free(message_surf);
+	surface_free(option_surface);
 	
 	if (keyboard_check_pressed(vk_enter) && typing_allowed){
 		var is_correct = false;

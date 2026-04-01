@@ -1,10 +1,10 @@
 ////  -- STREAMER STUFF --
 /// Testing stuff
-if scr_keybind_pressed(ord("0")) && keyboard_check(vk_shift) {
+if debug_keyboard_check_pressed(ord("0")) && keyboard_check(vk_shift) {
 	//scr_streamer_change_state(0);
 	scr_banter(0, 0)
 }
-if scr_keybind_pressed(ord("1")) && keyboard_check(vk_shift) {
+if debug_keyboard_check_pressed(ord("1")) && keyboard_check(vk_shift) {
 	scr_streamer_change_state(1, global.streamer_on);
 	
 	scr_streamer_say(0, snd_testsound1)
@@ -21,7 +21,7 @@ if global.streamer_on == global.streamers_unlocked
 if global.streamer_on < 0
 	global.streamer_on = global.streamers_unlocked - 1
 
-if scr_keybind_pressed(ord("D")) 
+if debug_keyboard_check_pressed(ord("D")) 
 	scr_add_streamer(1, 3, 60, 15, 0, 1)
 
 if scr_keybind_pressed(ord("S")) && !keyboard_check(vk_shift) 
@@ -89,10 +89,10 @@ for (var i = 0; i < global.streamers_unlocked; i++) {
 
 ////  -- CHAT STUFF --
 /// Testing stuff
-if scr_keybind_pressed(ord("0")) && !keyboard_check(vk_shift) {
+if debug_keyboard_check_pressed(ord("0")) && !keyboard_check(vk_shift) {
 	scr_chat_change_state(0);
 }
-if scr_keybind_pressed(ord("1")) && !keyboard_check(vk_shift) {
+if debug_keyboard_check_pressed(ord("1")) && !keyboard_check(vk_shift) {
 	scr_chat_change_state(1);
 }
 

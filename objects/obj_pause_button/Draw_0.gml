@@ -78,6 +78,8 @@ if clickprogress > 0 {
 	}
 	else if quit || REALLYquit {
 		
+		init();
+		
 		draw_set_color(c_white);
 		
 		var str = quit ? "Really exit to MAIN MENU?\nYour progress WON'T be saved." : "Really exit to DESKTOP?\nYour progress WON'T be saved."

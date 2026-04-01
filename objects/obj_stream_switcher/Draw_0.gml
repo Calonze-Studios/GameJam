@@ -80,6 +80,8 @@ for (var a = 0; a < global.streamers_unlocked; a++) {
 	if !surface_exists(global.streamsurf[a])
 		global.streamsurf[a] = surface_create(912, 513);
 	
+	if (a+1 > array_length(hover_alpha)) hover_alpha[a] = 0;
+	
 	if global.stream_hovering == a {
 		hover_alpha[a] += 0.1
 		hover_alpha[a] = clamp(hover_alpha[a], 0, 1)
